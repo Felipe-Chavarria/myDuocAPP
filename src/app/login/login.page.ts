@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{ NavControler } from '@ionic/angular'
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +11,23 @@ export class LoginPage {
   public correo: string;
   public password: any;
 
-  constructor(private NavCtrl: NavControler) {
-    this.correo = '',
+  constructor(private NavCtrl: NavController) {
+    this.correo = '';
     this.password = '';
-   }
-   login(){
-    if (this,this.correo == 'admin@gmail.com' && this.password == '12345'){
-      //alert('es admin')
-      this.NavCtrl.navigateForward('/home')
-    } 
-    if (this,this.correo == 'admin@gmail.com' && this.password == '12345'){
-      alert('es alumno')
-      this.NavCtrl.navigateForward('/home')
-    }else{
-      //alert('error no esta registrado');
+  }
+
+  login() {
+    if (this.correo === 'admin@gmail.com' && this.password === '12345') {
+      // Si es administrador
+      //alert('es admin');
+      this.NavCtrl.navigateForward('/home');
+    } else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
+      // Si es alumno
+      alert('es alumno');
+      this.NavCtrl.navigateForward('/home');
+    } else {
+      // Usuario no registrado
+      alert('error no está registrado');
     }
-
-   }
-
+  }
 }
