@@ -10,21 +10,25 @@ export class LoginPage {
 
   public correo: string;
   public password: any;
+  public usuario: string;
 
   constructor(private NavCtrl: NavController) {
     this.correo = '';
     this.password = '';
+    this.usuario ='';
   }
 
   login() {
     if (this.correo === 'admin@gmail.com' && this.password === '12345') {
       alert('El admin ha Ingresado');
       this.NavCtrl.navigateForward('/home');
-    } else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
+    }
+      else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
       // Si es alumno
       alert('El alumno ha Ingresado');
       this.NavCtrl.navigateForward('/home');
-    } else {
+    } 
+      else {
       // Usuario no registrado
       alert('Error no está registrado');
     }

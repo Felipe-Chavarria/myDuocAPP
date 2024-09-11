@@ -12,11 +12,16 @@
   </ion-header>
 
   <div id="container">
-    <h1>Bienvenido {{ correo }}</h1>
+    <h1>Bienvenido {{ usuario }}</h1>
 
     <ion-list>
       <ion-item>
-        <!--correo -->
+        <!--Usuario-->
+        <ion-input [(ngModel)]="usuario" label="Nombre Usuario: " type="email" placeholder="Ingrese su Uusuario"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <!--Correo -->
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su Correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">
           <ion-label color="danger"></ion-label>
@@ -24,7 +29,7 @@
       </ion-item>
 
       <ion-item>
-        <!-- contraseña -->
+        <!--Contraseña-->
         <ion-input [(ngModel)]="password" label="Contraseña: " type="password" placeholder="Ingrese su contraseña">
           <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
