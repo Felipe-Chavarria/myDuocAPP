@@ -25,3 +25,40 @@
 #container a {
   text-decoration: none;
 }
+
+
+.gif, .Usuario {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10%;
+
+}
+
+.container{
+  margin-left: 10%;
+  margin-top: 20%;
+}
+
+.Ingresar{
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Ver-Asignaturas{
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.boton{
+  width: 50%; 
+  height: 40px; 
+  font-size: 14px; 
+  
+}
+
