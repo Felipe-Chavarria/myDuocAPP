@@ -36,6 +36,9 @@
       </ion-item>
     </ion-list>
 
-    <ion-button id="btn-iniciar" expand="" (click)="login()">Iniciar sesión</ion-button>
-  </div>
+  </ion-list>
+
+  <ion-button expand="block" color="danger" (click)="login()">Iniciar sesión</ion-button>
+  <ion-label color = "primary" [routerLink]="['/recuperar']">  Ha olvidado su contraseña? </ion-label><br>
+
 </ion-content>
