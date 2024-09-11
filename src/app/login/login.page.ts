@@ -18,16 +18,15 @@ export class LoginPage {
 
   login() {
     if (this.correo === 'admin@gmail.com' && this.password === '12345') {
-      // Si es administrador
-      //alert('es admin');
+      alert('El admin ha Ingresado');
       this.NavCtrl.navigateForward('/home');
     } else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
       // Si es alumno
-      alert('es alumno');
+      alert('El alumno ha Ingresado');
       this.NavCtrl.navigateForward('/home');
     } else {
       // Usuario no registrado
-      alert('error no está registrado');
+      alert('Error no está registrado');
     }
   }
 }
