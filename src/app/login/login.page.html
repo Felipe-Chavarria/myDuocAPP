@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title > Inicio </ion-title>
+    <ion-title>Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,29 +16,27 @@
 
     <ion-list>
       <ion-item>
-        <!--Usuario-->
-        <ion-input [(ngModel)]="usuario" label="Nombre Usuario: " type="email" placeholder="Ingrese su Uusuario"></ion-input>
+        <!-- Usuario -->
+        <ion-input [(ngModel)]="usuario" label="Nombre Usuario: " type="email" placeholder="Ingrese su Usuario"></ion-input>
       </ion-item>
       
       <ion-item>
-        <!--Correo -->
+        <!-- Correo -->
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su Correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">
-          <ion-label color="danger"></ion-label>
+          <ion-label color="danger">Correo inválido</ion-label>
         </div>
       </ion-item>
 
       <ion-item>
-        <!--Contraseña-->
+        <!-- Contraseña -->
         <ion-input [(ngModel)]="password" label="Contraseña: " type="password" placeholder="Ingrese su contraseña">
           <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
       </ion-item>
     </ion-list>
 
-  </ion-list>
-
-  <ion-button expand="block" color="danger" (click)="login()">Iniciar sesión</ion-button>
-  <ion-label color = "primary" [routerLink]="['/recuperar']">  Ha olvidado su contraseña? </ion-label><br>
-
+    <ion-button expand="block" color="primary" (click)="login()">Iniciar sesión</ion-button>
+    <ion-label color="primary" [routerLink]="['/recuperar']">¿Ha olvidado su contraseña?</ion-label>
+  </div>
 </ion-content>
