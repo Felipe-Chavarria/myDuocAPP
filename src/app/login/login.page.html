@@ -22,7 +22,6 @@
       </ion-item>
       
       <ion-item>
-        
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su Correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">
           <ion-label color="danger">Correo inválido</ion-label>
