@@ -16,7 +16,7 @@
 
     <ion-list>
       <ion-item>
-        <!-- Correo para recuperar -->
+        
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">
           <ion-label color="danger">Correo inválido</ion-label>
