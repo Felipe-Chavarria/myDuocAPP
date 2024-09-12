@@ -6,7 +6,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit{
 
   public correo: string;
   public password: any;
@@ -18,17 +18,27 @@ export class LoginPage {
     this.usuario ='';
   }
 
+  ngOnInit() {
+    const storedUser =  localStorage.getItem('usuario');
+    if(storedUser){
+      this.usuario = storedUser;
+    }
+  }
+
   login() {
     if (this.correo === 'admin@gmail.com' && this.password === '12345') {
+      // Si es administrador
       alert('El admin ha Ingresado');
+      localStorage.setItem('usuario', this.usuario);  // Guardar en localStorage
       this.NavCtrl.navigateForward('/home');
-    }else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
+    } else if (this.correo === 'alumno@gmail.com' && this.password === '12345') {
       // Si es alumno
       alert('El alumno ha Ingresado');
+      localStorage.setItem('usuario', this.usuario);  // Guardar en localStorage
       this.NavCtrl.navigateForward('/home');
     } else {
       // Usuario no registrado
-      alert('Error no está registrado');
+      alert('Error: no está registrado');
     }
   }
 }
