@@ -1,15 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recuperar</ion-title>
+    <ion-title>Recuperar Contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">recuperar</ion-title>
+      <ion-title size="large">Recuperar Contraseña</ion-title>
     </ion-toolbar>
-    <ion-button id="open-action-sheet" >Recuperar contraseña</ion-button><br><br>
-  <ion-label color = "primary" [routerLink]="['/']"> <--Volver </ion-label>
   </ion-header>
+
+  <div id="container">
+    <h1>Restablece tu contraseña</h1>
+
+    <ion-list>
+      <ion-item>
+        <!-- Correo para recuperar -->
+        <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su correo"></ion-input>
+        <div *ngIf="correo.length < 10 && correo.length > 0">
+          <ion-label color="danger">Correo inválido</ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="primary" (click)="recuperar()">Recuperar Contraseña</ion-button>
+    <ion-label color = "primary" [routerLink]="['/']"> <--Volver </ion-label>
+  </div>
 </ion-content>

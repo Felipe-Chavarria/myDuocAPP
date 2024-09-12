@@ -5,11 +5,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './recuperar.page.html',
   styleUrls: ['./recuperar.page.scss'],
 })
-export class RecuperarPage implements OnInit {
+export class RecuperarPage {
+  correo: string = '';
 
-  constructor() { }
-
-  ngOnInit() {
+  recuperar() {
+    if (this.correo.length >= 10) {
+      // Lógica para el envío del correo de recuperación
+      console.log(`Se ha enviado un correo de recuperación a: ${this.correo}`);
+    } else {
+      console.log('Correo inválido');
+    }
   }
-
 }
