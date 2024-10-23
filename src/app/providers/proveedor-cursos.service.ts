@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { CursosResponse } from '../models/cursos';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class ProveedorCursosService {
   }
 
   obtenerDatos(){
-    return this.http.get('https://www.presenteprofe.cl/api/v1/cursos?user=profesor@presenteprofe.cl')
+    return this.http.get<CursosResponse>('https://www.presenteprofe.cl/api/v1/cursos?user=profesor@presenteprofe.cl')
   }
 
 }

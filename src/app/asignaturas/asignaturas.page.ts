@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { library, playCircle, radio, search } from 'ionicons/icons';
+import { NavController } from '@ionic/angular';
+import { ProveedorCursosService } from '../providers/proveedor-cursos.service'
+import { Curso } from '../models/cursos';
 
 @Component({
   selector: 'app-asignaturas',
@@ -8,14 +11,20 @@ import { library, playCircle, radio, search } from 'ionicons/icons';
   styleUrls: ['./asignaturas.page.scss'],
 })
 export class AsignaturasPage implements OnInit {
+  cursos : Curso[] = [];
 
-  constructor() {
+  constructor(public navCtrl: NavController, public proveedor: ProveedorCursosService) {
    
     addIcons({ library, playCircle, radio, search });
   }
 
+
   ngOnInit() {
-    // Código adicional al inicializar la página
+    this.proveedor.obtenerDatos()
+    .subscribe(
+      (data)=> {this.cursos = data.cursos;},
+      (error)=> {console.log(error);}
+    )
   }
 
 }
