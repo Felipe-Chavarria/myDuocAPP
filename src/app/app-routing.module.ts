@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'asignaturas',
     loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
   },
+  {
+    path: 'ingresar',
+    loadChildren: () => import('./ingresar/ingresar.module').then( m => m.IngresarPageModule)
+  },
 
 ];
 

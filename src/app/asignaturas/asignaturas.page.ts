@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { addIcons } from 'ionicons';
+import { library, playCircle, radio, search } from 'ionicons/icons';
 
 @Component({
   selector: 'app-asignaturas',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsignaturasPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+   
+    addIcons({ library, playCircle, radio, search });
+  }
 
   ngOnInit() {
+    // Código adicional al inicializar la página
   }
 
 }
