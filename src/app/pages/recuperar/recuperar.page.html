@@ -19,12 +19,12 @@
       <ion-item>
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su Correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">
-          <ion-label  color="danger">Correo inválido</ion-label>
+          <ion-label color="danger">Correo inválido</ion-label>
         </div>
       </ion-item>
     </ion-list>
 
     <ion-button class="boton" expand="block" color="primary" (click)="recuperar()">Recuperar Contraseña</ion-button><br>
-    <ion-label id="ion-label-b" color = "primary" [routerLink]="['/']"> <--Volver </ion-label>
+    <ion-label id="ion-label-b" color="primary" [routerLink]="['/']"> <--Volver </ion-label>
   </div>
 </ion-content>
