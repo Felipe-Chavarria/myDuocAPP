@@ -6,17 +6,19 @@ import { NavController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {  // Asegúrate de implementar OnInit
+export class HomePage implements OnInit {
   public usuario: string;
 
   constructor(private NavCtrl: NavController) {
-    this.usuario = 'Usuario'; // Valor predeterminado
+    this.usuario = '';
   }
 
   ngOnInit() {
     const storedUser = localStorage.getItem('usuario');
     if (storedUser) {
       this.usuario = storedUser; // Recuperar usuario almacenado
+    } else {
+      this.usuario = 'Usuario'; // Valor predeterminado si no hay usuario
     }
   }
 }
