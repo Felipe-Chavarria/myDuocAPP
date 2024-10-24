@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { CursosResponse } from '../models/cursos';
-
+import { Observable } from 'rxjs';
+import { Curso } from '../models/cursos';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProveedorCursosService {
+  private apiUrl = 'https://www.presenteprofe.cl/api/v1/cursos?user=profesor@presenteprofe.cl';
 
-  constructor(public http: HttpClient) { 
-    console.log('Hello ProveedorCursosService Service');
+  constructor(private http: HttpClient) {}
+
+  obtenerDatos(): Observable<any> {
+    return this.http.get<any>(this.apiUrl); 
   }
-
-  obtenerDatos(){
-    return this.http.get<CursosResponse>('https://www.presenteprofe.cl/api/v1/cursos?user=profesor@presenteprofe.cl')
-  }
-
 }

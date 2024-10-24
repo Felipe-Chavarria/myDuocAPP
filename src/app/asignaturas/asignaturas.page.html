@@ -1,39 +1,46 @@
 <ion-tabs>
   <ion-tab tab="home">
-    <div id="home-page">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Ver asignaturas</ion-title>
-          <div class="Volver-Inicio">
-            <ion-leabe class="boton" routerLink="/home"> <--Back </ion-leabe>
-          </div>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <div class="example-content">Mis asignaturas</div>
-      </ion-content>
-    </div>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Ver asignaturas</ion-title>
+        <ion-buttons slot="start">
+          <ion-button routerLink="/home"> <-- Back </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <h2 style="text-align: center;">Mis asignaturas</h2>
+    
+      <div class="cards-container">
+        <ion-card *ngFor="let curso of cursos">
+          <ion-card-header>
+            <ion-card-title>{{ curso.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ curso.descripcion }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Here's a small text description for the card content. Nothing more, nothing less.
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </ion-content>
   </ion-tab>
-  <!--Card de las asignaturas-->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-  
-    <ion-button fill="clear">Action 1</ion-button>
-    <ion-button fill="clear">Action 2</ion-button>
-  </ion-card>
- 
+
+  <ion-tab tab="qr">
+    <ion-content>
+      <h2 style="text-align: center;">Escanear QR</h2>     
+    </ion-content>
+  </ion-tab>
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="qr">
       <ion-icon name="qr-code-outline"></ion-icon>
-      QR
+      <ion-label>QR</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
