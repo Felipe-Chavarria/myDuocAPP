@@ -1,4 +1,3 @@
-// cursos.ts
 export interface CursosResponse {
     message: string;
     cursos: Curso[];

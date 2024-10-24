@@ -1,24 +1,35 @@
 <ion-tabs>
-    <ion-tab tab="home">
-      <div id="home-page">
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Ingresar a clases</ion-title>
-            <div class="Volver-Inicio">
-              <ion-leabe class="boton" routerLink="/home"> <--Back </ion-leabe>
-            </div>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <div class="example-content">Mis clases</div>
-        </ion-content>
-      </div>
-    </ion-tab>
-  
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home">
-        <ion-icon name="qr-code-outline"></ion-icon>
-        QR
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  <ion-tab tab="home">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Ingresar a clases</ion-title>
+        <ion-buttons slot="start">
+          <ion-button routerLink="/home"> <-- Back </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+  </ion-tab>
+
+  <ion-tab tab="qr">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button routerLink="/home"> <-- Back </ion-button>
+        </ion-buttons>
+        <ion-title>Escanear QR</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="qr-content">
+      <h2>Escanear QR</h2>
+    </ion-content>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="qr">
+      <ion-icon name="qr-code-outline"></ion-icon>
+      <ion-label>QR</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
