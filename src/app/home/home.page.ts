@@ -43,10 +43,10 @@ export class HomePage  {
     
 
     this.http.post(apiUrl, body).subscribe(
-      (response) => {
+      (response:any) => {
         console.log('Asistencia registrada exitosamente', response);
       },
-      (error) => {
+      (error:any) => {
         console.error('Error registrando asistencia', error);
       }
     );
