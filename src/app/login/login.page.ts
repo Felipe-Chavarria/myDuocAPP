@@ -1,58 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
+import { Login } from '../models/login';
+import { Responsive } from '../models/responsive';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage{
+
   public correo: string;
-  public password: string;
+  public password: any;
   public usuario: string;
+  private token: string;
 
-  private apiUrl = 'https://www.presenteprofe.cl/api/v1/auth';
-
-  constructor(private NavCtrl: NavController, private http: HttpClient) {
+  constructor(private NavCtrl: NavController, private api: ProveedorCursosService, private router: Router) {
     this.correo = '';
     this.password = '';
-    this.usuario = '';
+    this.usuario ='';
+    this.token = '';
   }
 
-  ngOnInit() {
-    const storedUser = localStorage.getItem('usuario');
-    if (storedUser) {
-      this.usuario = storedUser;
-    }
-  }
 
-  login() {
-    const credentials = {
-      correo: this.correo,
-      password: this.password,
-    };
-
-    this.http.post(this.apiUrl, credentials).subscribe(
-      (response: any) => {
-        console.log(response); // Imprime la respuesta para verificar la estructura
-
-        if (response && response.message === 'Success') {
-          alert('Login exitoso');
-
-          // Guardar solo el nombre y apellido en localStorage
-          this.usuario = `${response.data.nombre} ${response.data.apellido}`;
-          localStorage.setItem('usuario', this.usuario); // Guardar solo el nombre y apellido en localStorage
-          
-          this.NavCtrl.navigateForward('/home'); // Navegar a la página de inicio
-        } else {
-          alert('Error: ' + response.message); // Mostrar mensaje de error de la respuesta
-        }
-      },
-      (error) => {
-        console.error('Error de conexión:', error); // Imprime el error en la consola para más detalles
-        alert('Error de conexión: ' + error.message);
+  login(form: Login) {
+    this.api.loginPorCorreo(form).subscribe(response => {
+        const datos: Responsive = {
+          mensaje: response.message,
+          perfil: response.perfil,
+          autenticacion: {
+            token: response.auth.token,
+            type: response.auth.type
+          },
+          data: {
+            id: response.data.id,
+            run: response.data.run,
+            nombre: response.data.nombre,
+            apellido: response.data.apellido,
+            nombre_completo: response.data.nombre_completo,
+            correo: response.data.correo,
+            perfil: response.data.perfil,
+            img: response.data.img
+          }
+    }; 
+      if(datos.mensaje === 'Success'){
+        localStorage.setItem('token', datos.autenticacion.token);
+        localStorage.setItem('perfil', datos.perfil);
+        localStorage.setItem('usuario', this.usuario);
+        const user = localStorage.getItem('usuario');
+        console.log(datos);
+        console.log(user)
+        this.router.navigate(['/home']);
       }
+      },error => {
+        console.log('Error al iniciar:', error);
+      },
     );
   }
 }

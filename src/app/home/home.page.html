@@ -1,7 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Usuario</ion-title>
+    <ion-title>
+      Usuario
+    </ion-title>
   </ion-toolbar>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -13,29 +16,37 @@
 
   <div class="container">
     <div class="header">
-      <div class="gif">
-        <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="Gif de Bienvenida">
-      </div>
+    <div class="gif">
+      <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="">
+    </div>
 
-      <div class="Usuario">
-        <h3>Bienvenido {{ usuario }}</h3> <!-- Mensaje de bienvenida -->
-      </div>
+    <div class="Usuario">
+      <h3>Bienvenido {{usuario}}</h3>
+    </div>
+    </div>
+</div>
+
+<div *ngIf="perfil === 'estudiante'">
+    <div class="Ingresar">
+      <ion-button class="boton" routerLink="/ingresar">Ingresar a clase</ion-button>
+    </div>
+
+    <div class="Ver-Asignaturas">
+      <ion-button class="boton" routerLink="/asignaturas">Ver Asignaturas</ion-button>
+    </div>
+  </div>
+  
+  <div *ngIf="perfil === 'docente'">
+    <div class="Gestionar-Clases">
+      <ion-button class="boton" routerLink="/gestionar-clases">Gestionar Clases</ion-button>
+    </div>
+
+    <div class="Ver-Alumnos">
+      <ion-button class="boton" routerLink="/ver-alumnos">Ver Alumnos</ion-button>
     </div>
   </div>
 
-  <div class="Ingresar">
-    <ion-button class="boton" routerLink="/ingresar">Ingresar a clase</ion-button>
-  </div>
-
-  <div class="Ver-Asignaturas">
-    <ion-button class="boton" routerLink="/asignaturas">Ver Asignaturas</ion-button>
-  </div>
-
-  <div class="Quienes-Somos">
-    <ion-button class="boton" routerLink="/quienes-somos">¿Quiénes Somos?</ion-button>
-  </div>
-
   <div class="Volver-Inicio">
-    <ion-button class="boton" color="danger" routerLink="/">Cerrar Sesión</ion-button>
+    <ion-button class="boton" color="danger" (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
   </div>
 </ion-content>
