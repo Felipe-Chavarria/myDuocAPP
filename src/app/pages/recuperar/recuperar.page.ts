@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProveedorCursosService} from '../../providers/proveedor-cursos.service';
 
 @Component({
   selector: 'app-recuperar',
@@ -8,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class RecuperarPage {
   correo: string = '';
 
+  constructor(private apiService: ProveedorCursosService) { }
+
   recuperar() {
     if (this.correo.length >= 10) {
-      // Lógica para el envío del correo de recuperación
-      console.log(`Se ha enviado un correo de recuperación a: ${this.correo}`);
-    } else {
-      console.log('Correo inválido');
+      this.apiService.recuperarContrsena(this.correo).subscribe(
+        response => {
+          console.log('correo de recuperacion enviado:',response.message);
+              alert('correo de recuperacion enviado. Revisa tu bandeja de entrada');
+        },
+        error => {
+          console.log('error:',error);
+          alert('error al enviar correo de recuperacion');
+        });
+    }else{
+      alert('ingresa un correo valido');
     }
   }
 }

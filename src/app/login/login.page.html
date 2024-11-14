@@ -13,14 +13,9 @@
   </ion-header>
 
   <div id="container">
-    <h1>Bienvenido {{ usuario }}</h1>
+    <h1>Bienvenido</h1>
 
     <ion-list>
-      <ion-item>
-        
-        <ion-input [(ngModel)]="usuario" label="Nombre Usuario: "placeholder="Ingrese su Usuario"></ion-input>
-      </ion-item>
-      
       <ion-item>
         <ion-input [(ngModel)]="correo" label="Correo: " type="email" placeholder="Ingrese su Correo"></ion-input>
         <div *ngIf="correo.length < 10 && correo.length > 0">

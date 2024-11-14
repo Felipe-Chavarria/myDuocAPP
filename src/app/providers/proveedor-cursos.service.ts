@@ -22,4 +22,8 @@ export class ProveedorCursosService {
     let url = this.url + 'auth';
     return this.http.post<any>(url, form);
   }
+
+  recuperarContrsena(correo: string): Observable<any> {
+    return this.http.post('${this.url}/recuperar', {correo});
+  }
 }

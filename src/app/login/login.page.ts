@@ -49,7 +49,7 @@ export class LoginPage{
       if(datos.mensaje === 'Success'){
         localStorage.setItem('token', datos.autenticacion.token);
         localStorage.setItem('perfil', datos.perfil);
-        localStorage.setItem('usuario', this.usuario);
+        localStorage.setItem('usuario', datos.data.nombre_completo);
         const user = localStorage.getItem('usuario');
         console.log(datos);
         console.log(user)
