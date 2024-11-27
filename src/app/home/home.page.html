@@ -38,26 +38,25 @@
   
 
 <div *ngIf="perfil === 'estudiante'">
-    <div class="Ingresar">
+  <div class="botones">
+    
       <ion-button class="boton" routerLink="/ingresar">Ingresar a clase</ion-button>
-    </div>
-
-    <div class="Ver-Asignaturas">
       <ion-button class="boton" routerLink="/asignaturas">Ver Asignaturas</ion-button>
-    </div>
+
   </div>
+</div>
   
-  <div *ngIf="perfil === 'docente'">
-    <div class="Gestionar-Clases">
+<div *ngIf="perfil === 'docente'">
+  <div class="botones">
+
       <ion-button class="boton" routerLink="/gestionar-clases">Gestionar Clases</ion-button>
-    </div>
-
-    <div class="Ver-Alumnos">
-      <ion-button class="boton" routerLink="/ver-alumnos">Ver Alumnos</ion-button>
-    </div>
+      <ion-button class="boton" routerLink="/Crear-asignatura">Crear Clase</ion-button>
+      <ion-button class="boton" routerLink="/Ver-asistencia">Ver Asistencia</ion-button>
+    
   </div>
+</div>
 
-  <div class="Volver-Inicio">
+  <div class="Volver-btn">
     <ion-button class="boton" color="danger" (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
   </div>
   </div>
