@@ -4,70 +4,53 @@
       <ion-toolbar>
         <ion-title>Ver asignaturas</ion-title>
         <ion-buttons slot="start">
-          <ion-button routerLink="/home"> <-- Back </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
-      <h2 style="text-align: center;">Mis asignaturas</h2>
+      <H2 style="text-align: center;">Mis asignaturas</H2>
       <div>
         <div id="carouselCursos" class="carousel slide" data-bs-ride="carousel">
-          <!-- Indicadores dinámicos -->
           <div class="carousel-indicators">
-            <button 
-              *ngFor="let curso of cursos; let i = index" 
-              type="button" 
-              data-bs-target="#carouselCursos" 
-              [attr.data-bs-slide-to]="i" 
-              [class.active]="i === 0" 
-              aria-current="i === 0 ? 'true' : null" 
+            <button
+              *ngFor="let curso of cursos; let i = index"
+              type="button"
+              data-bs-target="#carouselCursos"
+              [attr.data-bs-slide-to]="i"
+              [class.active]="i === 0"
+              aria-current="i === 0 ? 'true' : null"
               [attr.aria-label]="'Slide ' + (i + 1)">
             </button>
           </div>
-        
-          <!-- Contenedor del carrusel -->
           <div class="carousel-inner">
             <div 
               *ngFor="let curso of cursos; let i = index" 
               class="carousel-item" 
               [class.active]="i === 0">
-              <!-- Card de Ionic dentro del slide -->
-              <div class="card-container">
-                <ion-card>
-                  <ion-card-header>
-                    <ion-card-title>{{ curso.nombre }}</ion-card-title>
-                    <ion-card-subtitle>{{ curso.descripcion }}</ion-card-subtitle>
-                  </ion-card-header>
-                  <ion-card-content>
-                    {{ curso.descripcion || 'Información adicional sobre el curso.' }}
-                  </ion-card-content>
-                </ion-card>
+              <div class="card">
+                <div class="card__border"></div>
+                <div class="card_title__container">
+                  <span class="card_title">{{ curso.nombre }}</span>
+                  <p class="card_paragraph">{{ curso.descripcion }}</p>
+                </div>
+                <hr class="line" />
+                <ul class="card__list">
+                  <li class="card__list_item">
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-        
-          <!-- Botones de navegación -->
-          <button 
-            class="carousel-control-prev" 
-            type="button" 
-            data-bs-target="#carouselCursos" 
-            data-bs-slide="prev" 
-            aria-label="Anterior">
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselCursos" data-bs-slide="prev" aria-label="Anterior">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
           </button>
-          <button 
-            class="carousel-control-next" 
-            type="button" 
-            data-bs-target="#carouselCursos" 
-            data-bs-slide="next" 
-            aria-label="Siguiente">
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselCursos" data-bs-slide="next" aria-label="Siguiente">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Siguiente</span>
           </button>
         </div>
-        
       </div>
     </ion-content>
   </ion-tab>
@@ -79,7 +62,7 @@
   </ion-tab>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
+    <ion-tab-button tab="home" routerLink="/home">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>

@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 200%;
   opacity: 0; /* Inicialmente oculto */
   transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Animación suave */
 }
@@ -42,17 +42,208 @@
   transform: translateX(-100%); /* Anterior: sale por la izquierda */
 }
 
-/* Estilo para las cards */
-.card-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 10px;
+/*style de las cards*/
+.card {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(220, 25%, 15%);
+  --paragraph: hsl(220, 15%, 75%);
+  --line: hsl(220, 20%, 25%); 
+  --primary: hsl(220, 70%, 50%);
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 1rem;
+  width: 19rem;
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(220, 25%, 15%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(220, 25%, 15%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsl(220, 70%, 30%)  0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsl(220, 60%, 35%) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsl(220, 80%, 25%) 0px, transparent 85%);
+
+  border-radius: 1rem;
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
 }
 
-/* Sombras y bordes para las cards */
-.card-container ion-card {
-  margin: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
+.card .card__border {
+  overflow: hidden;
+  pointer-events: none;
+
+  position: absolute;
+  z-index: -10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background-image: linear-gradient(
+    0deg,
+    hsl(220, 70%, 50%)  -50%,
+    hsl(220, 20%, 30%) 100%
+  );
+
+  border-radius: 1rem;
+}
+
+.card .card__border::before {
+  content: "";
+  pointer-events: none;
+
+  position: fixed;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%), rotate(0deg);
+  transform-origin: left;
+
+  width: 200%;
+  height: 10rem;
+  background-image: linear-gradient(
+    0deg,
+    hsla(0, 0%, 100%, 0) 0%,
+    hsl(220, 70%, 50%) 40%,
+    hsl(220, 70%, 50%) 60%,
+    hsla(220, 20%, 30%, 0) 100%
+  );
+
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card .card_title__container .card_title {
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.card .card_title__container .card_paragraph {
+  margin-top: 0.25rem;
+  width: 65%;
+
+  font-size: 0.5rem;
+  color: var(--paragraph);
+}
+
+.card .line {
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--line);
+
+  border: none;
+}
+
+.card .card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card .card__list .card__list_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card .card__list .card__list_item .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--primary);
+
+  border-radius: 50%;
+}
+
+.card .card__list .card__list_item .check .check_svg {
+  width: 0.75rem;
+  height: 0.75rem;
+
+  fill: var(--black);
+}
+
+.card .card__list .card__list_item .list_text {
+  font-size: 0.75rem;
+  color: var(--white);
+}
+
+.card .button {
+  cursor: pointer;
+
+  padding: 0.5rem;
+  width: 100%;
+  background-image: linear-gradient(
+    0deg,
+    hsl(220, 70%, 50%),
+    hsl(220, 60%, 30%) 100%
+  );
+
+  font-size: 0.75rem;
+  color: var(--white);
+
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: inset 0 -2px 25px -4px var(--white);
+}
+/*style de los botones*/
+ion-tab-bar {
+  --ion-tab-bar-background: hsl(220, 25%, 15%); /* Azul oscuro para el fondo */
+  --ion-tab-bar-border-color: hsl(220, 20%, 25%); /* Azul claro para el borde */
+  --color: hsl(220, 15%, 75%); /* Azul grisáceo para los íconos y texto inactivos */
+  --color-selected: hsl(220, 70%, 50%); /* Azul vibrante para el seleccionado */
+}
+
+ion-tab-button {
+  font-size: 0.85rem; /* Ajusta el tamaño del texto */
+  --ripple-color: hsl(220, 70%, 50%); /* Color de la animación ripple */
+}
+
+ion-icon {
+  font-size: 1.2rem; /* Tamaño del ícono */
+}
+
+ion-label {
+  margin-top: 0.2rem; /* Ajuste de espacio entre el ícono y el texto */
+}
+/*style header*/
+ion-header {
+  --background: hsl(220, 25%, 15%); /* Fondo azul oscuro */
+  --color: hsl(220, 15%, 75%); /* Texto en azul grisáceo */
+  --ion-toolbar-border-color: hsl(220, 20%, 25%); /* Borde azul claro */
+}
+
+ion-toolbar {
+  --background: hsl(220, 25%, 15%); /* Fondo del toolbar */
+  --color: hsl(220, 15%, 75%); /* Color del texto */
+}
+
+ion-title {
+  font-size: 1.2rem; /* Tamaño del texto */
+  font-weight: bold;
+  text-align: center;
+  color: hsl(220, 70%, 50%); /* Azul vibrante */
+}
+
+ion-buttons ion-button { /* Fondo transparente */
+  --color: hsl(220, 70%, 50%); /* Azul vibrante para el texto del botón */
+  font-size: 0.85rem;
+}
+
+ion-buttons ion-button:hover {
+  --background: hsl(220, 70%, 25%); /* Fondo azul suave al pasar el mouse */
 }
