@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'ingresar',
     loadChildren: () => import('./ingresar/ingresar.module').then( m => m.IngresarPageModule)
   },
+  {
+    path: 'crear-asignatura',
+    loadChildren: () => import('./crear-asignatura/crear-asignatura.module').then( m => m.CrearAsignaturaPageModule)
+  },
 
 ];
 

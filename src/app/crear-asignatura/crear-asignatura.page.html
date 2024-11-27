@@ -1,0 +1,62 @@
+<ion-content>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Crear Asignatura</h2>
+
+    <!-- Formulario -->
+    <form [formGroup]="asignaturaForm" (ngSubmit)="enviarFormulario()" class="needs-validation" novalidate>
+      
+      <!-- Nombre de Asignatura -->
+      <div class="row mb-3 align-items-center">
+        <div class="col-md-4 text-end">
+          <ion-label>Nombre de la Asignatura:</ion-label>
+        </div>
+        <div class="col-md-6">
+          <ion-item class="form-control">
+            <ion-input
+              formControlName="nombre"
+              placeholder="Ingrese el nombre"
+              required>
+            </ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Descripción -->
+      <div class="row mb-3 align-items-center">
+        <div class="col-md-4 text-end">
+          <ion-label>Descripción:</ion-label>
+        </div>
+        <div class="col-md-6">
+          <ion-item class="form-control">
+            <ion-textarea
+              formControlName="descripcion"
+              placeholder="Ingrese una descripción"
+              required>
+            </ion-textarea>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Fecha de Creación -->
+      <div class="row mb-3">
+        <div class="col-12 text-center">
+          <ion-item class="d-inline-block">
+            <ion-datetime
+              formControlName="fecha"
+              placeholder="Seleccione la fecha"
+              display-format="DD MMM YYYY">
+            </ion-datetime>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Botón de Enviar -->
+      <div class="d-flex justify-content-center">
+        <ion-button expand="block" type="submit" [disabled]="asignaturaForm.invalid">
+          Crear Asignatura
+        </ion-button>
+      </div>
+
+    </form>
+  </div>
+</ion-content>
