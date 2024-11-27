@@ -15,3 +15,44 @@
     gap: 16px; 
   }
 }
+/* Configuración básica del carrusel */
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  opacity: 0; /* Inicialmente oculto */
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out; /* Animación suave */
+}
+
+/* Elemento activo */
+.carousel-item.active {
+  opacity: 1; /* Visible solo la card activa */
+  transform: translateX(0);
+}
+
+/* Elementos fuera de pantalla */
+.carousel-item-next,
+.carousel-item-prev {
+  opacity: 0;
+  transform: translateX(100%); /* Próximo: sale por la derecha */
+}
+
+.carousel-item-prev {
+  transform: translateX(-100%); /* Anterior: sale por la izquierda */
+}
+
+/* Estilo para las cards */
+.card-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Sombras y bordes para las cards */
+.card-container ion-card {
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
