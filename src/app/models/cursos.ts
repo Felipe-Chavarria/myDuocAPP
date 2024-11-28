@@ -4,6 +4,7 @@ export interface CursosResponse {
 }
 
 export interface Curso {
+sigla: any;
     id: number;
     nombre: string;
     descripcion: string;

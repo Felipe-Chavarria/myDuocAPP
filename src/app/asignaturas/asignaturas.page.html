@@ -35,6 +35,10 @@
                   <div class="card_title__container">
                     <h2 class="card_title">{{ curso.nombre }}</h2>
                     <p class="card_paragraph">{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
+                    <div class="id-sigla">
+                        <div>{{curso.id}}</div>
+                        <div class="push">{{curso.sigla}}</div>
+                    </div>
                   </div>
                   <hr class="line" />
                   <div class="card__list">
