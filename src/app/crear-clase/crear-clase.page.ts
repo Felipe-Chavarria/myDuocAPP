@@ -12,7 +12,7 @@ export class CrearClasePage implements OnInit {
   public fecha: string = '';
   public hora_inicio: string = '';
   public hora_termino: string = '';
-  private idCurso: number = 0; // ID del curso obtenido desde la URL
+  private idCurso: number | undefined; // ID del curso obtenido desde la URL
 
   constructor(
     private api: ProveedorCursosService,
@@ -31,7 +31,7 @@ export class CrearClasePage implements OnInit {
     }
 
     this.api.crearClase(this.idCurso, form).subscribe(
-      (response) => {
+      (response : any) => {
         if (response.message === 'Clase creada exitosamente') {
           alert('Clase creada con éxito. ID: ' + response.id);
         } else if (response.message === 'No autenticado') {
