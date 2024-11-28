@@ -1,41 +1,128 @@
-/* Contenedor del formulario */
+/* Estilo global para el contenido */
+ion-content {
+  padding: 2rem;
+}
+
+/* Estilo para el contenedor principal */
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+  background-color: #ffffff; 
+  border-radius: 10px; 
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); 
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto; 
+}
+
+/* Título principal */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(220, 25%, 15%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(220, 25%, 15%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsl(220, 70%, 30%)  0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsl(220, 60%, 35%) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsl(220, 80%, 25%) 0px, transparent 85%);
     padding: 1rem;
+    border-radius: 1rem;
+}
+
+/* Estilo para los items dentro de la lista */
+ion-item {
+  --background: hsl(0, 0%, 98%);
+  --border-color: hsl(0, 0%, 0%);
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+ion-input,
+ion-textarea {
+  --padding-start: 1rem;
+}
+
+/* Estilo para el botón */
+ion-button {
+  --background: hsl(220, 70%, 50%); 
+  --color: white; 
+  --border-radius: 25px; 
+  --height: 50px; 
+  font-size: 1rem;
+  margin-top: 2rem; 
+  transition: background-color 0.3s ease;
+}
+
+
+ion-button:hover {
+  --background: hsl(220, 70%, 40%); 
+}
+
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+:root {
+  --ion-background-color: #fff;
+  --ion-text-color: #000;
+  --ion-border-color: #ccc;
+
+  // Modo oscuro
+  --ion-background-color-dark: #121212;
+  --ion-text-color-dark: #fff;
+  --ion-border-color-dark: #555;
+}
+
+
+body {
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+  border-color: var(--ion-border-color);
+
+  &.dark {
+    background-color: var(--ion-background-color-dark);
+    color: var(--ion-text-color-dark);
+    border-color: var(--ion-border-color-dark);
   }
-  
-  /* Estilo de los labels */
-  form .form-label {
-    display: block;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    color: #4CAF50; /* Color preferido */
+}
+
+.container {
+  padding: 16px;
+  background-color: var(--ion-background-color);
+  border-radius: 8px;
+
+  &.dark {
+    background-color: var(--ion-background-color-dark);
   }
-  
-  /* Campos de entrada */
-  form ion-input,
-  form ion-textarea {
-    padding: 1rem;
-    font-size: 1rem;
+}
+
+
+ion-item {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+
+  &.dark {
+    --background: var(--ion-background-color-dark);
+    --color: var(--ion-text-color-dark);
   }
-  
-  /* Tamaño adecuado para descripción */
-  form ion-textarea {
-    min-height: 200px; /* Mayor altura */
+}
+
+ion-button {
+  --background: #0fb945;
+  --color: #fff;
+
+  &:hover {
+    opacity: 0.8;
   }
-  
-  /* Botón de enviar */
-  ion-button {
-    --background: #4CAF50;
-    --background-hover: #45A049;
-    --border-radius: 5px;
-    padding: 0.75rem 1.5rem;
-  }
-  
-  /* Espaciado entre elementos */
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
+}
