@@ -1,34 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../providers/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
-  public usuario: string = '';
+export class HomePage  {
+  
+  public usuario: any ;
   public perfil: any;
   public currentTheme: 'light' | 'dark' = 'light';
 
-  constructor(private NavCtrl: NavController, private router: Router) {}
-
-  ngOnInit() {
-    const storedUser = localStorage.getItem('usuario');
-    this.usuario = storedUser ? storedUser : 'Usuario';
-
-    this.perfil = localStorage.getItem('perfil');
-
-    const storedTheme = localStorage.getItem('theme') || 'light';
-    this.currentTheme = storedTheme as 'light' | 'dark';
-    document.body.setAttribute('color-theme', this.currentTheme);
+  constructor(private auth: AuthService, private router: Router) {
+    this.usuario = '';
+    this.perfil = '';
   }
 
-  cerrarSesion() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('perfil');
-    localStorage.removeItem('usuario');
+  ngOnInit() {
+      this.usuario = this.auth.getNombre();
+      this.perfil = this.auth.getPerfil();
+}
+
+  cerrarSesion(){
     this.router.navigate(['/login']);
   }
 

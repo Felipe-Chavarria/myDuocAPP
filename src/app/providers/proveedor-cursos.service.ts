@@ -9,13 +9,17 @@ import { Responsive } from '../models/responsive';
   providedIn: 'root',
 })
 export class ProveedorCursosService {
-  private apiUrl = 'https://www.presenteprofe.cl/api/v1/cursos?user=profesor@presenteprofe.cl';
   private url = 'https://www.presenteprofe.cl/api/v1/';
 
   constructor(private http: HttpClient) {}
 
   obtenerDatos(): Observable<any> {
-    return this.http.get<any>(this.apiUrl); 
+    return this.http.get<any>('${this.url}/auth'); 
+  }
+
+  obtenerCursosEstudiante(): Observable<Curso[]> {
+    let url = this.url + 'estudiante/cursos';
+    return this.http.get<any>(url);
   }
 
   loginPorCorreo(form:Login){
@@ -24,6 +28,12 @@ export class ProveedorCursosService {
   }
 
   recuperarContrsena(correo: string): Observable<any> {
-    return this.http.post('${this.url}/recuperar', {correo});
+    let url = this.url + 'recuperar';
+    return this.http.post(url, {correo});
+  }
+
+  obtenerMisDatos(): Observable<any> {
+    let url = this.url + 'auth/me';
+    return this.http.get(url);
   }
 }

@@ -14,17 +14,19 @@
 
 <ion-content [fullscreen]="true">
   <div class="wrapper">
-    <div class="container">
-      <div class="header">
-        <div class="gif">
-          <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="GIF de mapache">
-        </div>
-        <div class="Usuario">
-          <h2>Bienvenido {{usuario}}</h2>
-          <h4 class="perfil-label">"{{perfil}}"</h4>
-        </div>
-      </div>
+  <div class="container">
+    <div class="header">
+    <div class="gif">
+      <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="">
     </div>
+
+    <div class="Usuario">
+      <h2>Bienvenido {{usuario}}</h2>
+      <h4 style="color: aqua;">{{perfil}}</h4>
+    </div>
+    </div>
+  </div>
+  
 
 <div *ngIf="perfil === 'estudiante'">
     <div class="Ingresar">

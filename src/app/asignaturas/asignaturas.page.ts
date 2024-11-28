@@ -3,7 +3,8 @@ import { addIcons } from 'ionicons';
 import { library, playCircle, radio, search } from 'ionicons/icons';
 import { NavController } from '@ionic/angular';
 import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
-import { Curso } from '../models/cursos';
+import { Curso } from '../models/cursos'
+import { AuthService } from '../providers/auth.service';
 
 @Component({
   selector: 'app-asignaturas',
@@ -14,20 +15,27 @@ export class AsignaturasPage implements OnInit {
   cursos: Curso[] = [];
   errorMessage: string = '';
 
-  constructor(public navCtrl: NavController, public proveedor: ProveedorCursosService) {
+  constructor(private proveedor: ProveedorCursosService, private auth: AuthService) {
     addIcons({ library, playCircle, radio, search });
   }
 
   ngOnInit() {
-    this.proveedor.obtenerDatos().subscribe(
-      (data) => {
-        this.cursos = data.cursos;
+      this.obtenerCursos();
+  }
+
+  obtenerCursos() {
+    this.proveedor.obtenerCursosEstudiante().subscribe(
+      (response: any) => {
+        if (response.message === 'Success') {
+          this.cursos = response.cursos;
+        }
+        else {
+          this.errorMessage = 'No se han encontrado cursos';
+        }
       },
-      (error) => {
-        console.log(error);
-        this.errorMessage = 'Error al cargar los cursos';
+      (error: any) => {
+        this.errorMessage = 'No se han encontrado cursos';
       }
     );
   }
-
 }

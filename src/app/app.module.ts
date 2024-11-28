@@ -10,11 +10,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProveedorCursosService } from './providers/proveedor-cursos.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AuthService } from './providers/auth.service';
+import { AuthInterceptor } from './interceptores/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ProveedorCursosService],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ProveedorCursosService,
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
