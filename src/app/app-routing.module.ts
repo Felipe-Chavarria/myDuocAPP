@@ -18,7 +18,8 @@ const routes: Routes = [
   {
     path: 'recuperar',
     loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
-  },  {
+  },
+  {
     path: 'quienes-somos',
     loadChildren: () => import('./quienes-somos/quienes-somos.module').then( m => m.QuienesSomosPageModule)
   },
@@ -34,6 +35,16 @@ const routes: Routes = [
     path: 'crear-asignatura',
     loadChildren: () => import('./crear-asignatura/crear-asignatura.module').then( m => m.CrearAsignaturaPageModule)
   },
+  {
+    path: 'crear-clase',
+    loadChildren: () => import('./crear-clase/crear-clase.module').then( m => m.CrearClasePageModule)
+  },  {
+    path: 'asignaturas-profesor',
+    loadChildren: () => import('./asignaturas-profesor/asignaturas-profesor.module').then( m => m.AsignaturasProfesorPageModule)
+  },
+
+  
+    
 
 ];
 

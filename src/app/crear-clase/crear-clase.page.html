@@ -1,0 +1,51 @@
+<ion-content>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Crear Clase</h2>
+
+    <ion-list>
+      <!-- Fecha -->
+      <ion-item>
+        <ion-datetime
+          [(ngModel)]="fecha"
+          label="Fecha"
+          placeholder="Seleccione la fecha"
+        ></ion-datetime>
+      </ion-item>
+
+      <!-- Hora de Inicio -->
+      <ion-item>
+        <ion-input
+          [(ngModel)]="hora_inicio"
+          label="Hora de Inicio"
+          type="time"
+          placeholder="Ingrese la hora de inicio"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Hora de Término -->
+      <ion-item>
+        <ion-input
+          [(ngModel)]="hora_termino"
+          label="Hora de Término"
+          type="time"
+          placeholder="Ingrese la hora de término"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <!-- Botón de Enviar -->
+    <div class="d-flex justify-content-center">
+      <ion-button
+        expand="block"
+        (click)="enviarFormulario({ fecha, hora_inicio, hora_termino })"
+      >
+        Crear Clase
+      </ion-button>
+    </div>
+
+    <!-- Botón Volver -->
+    <div class="Volver-btn">
+      <ion-button class="boton" color="danger" routerLink="/home">Volver</ion-button>
+    </div>
+  </div>
+</ion-content>

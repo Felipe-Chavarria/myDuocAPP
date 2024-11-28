@@ -10,7 +10,7 @@ import { CrearAsignaturaPage } from './crear-asignatura.page';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule, // Asegúrate de agregar esto
+    ReactiveFormsModule, 
     IonicModule,
     CrearAsignaturaPageRoutingModule
   ],

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Curso } from '../models/cursos';
 import { Login} from '../models/login';
 import { Responsive } from '../models/responsive';
+import { ClaseResponse, CrearClase } from '../models/clase';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,12 @@ export class ProveedorCursosService {
     let url = this.url + 'estudiante/cursos';
     return this.http.get<any>(url);
   }
+
+  obtenerCursosProfesor(): Observable<any> {
+    let url = this.url + 'cursos';
+    return this.http.get<any>(url);
+  }
+  
 
   loginPorCorreo(form:Login){
     let url = this.url + 'auth';
@@ -42,6 +49,11 @@ export class ProveedorCursosService {
     return this.http.post(url, form);
   }
 
+  crearClase(idCurso: number, form: CrearClase): Observable<ClaseResponse> {
+    const url = `${this.url}cursos/${idCurso}/clase`;
+    return this.http.post<ClaseResponse>(url, form);
+  }
+  
   registrarAsistencia(eventCode: string): Observable<any> {
     let url = this.url + 'clases/' + eventCode + '/asistencia';
     return this.http.post(url, { evento: eventCode });

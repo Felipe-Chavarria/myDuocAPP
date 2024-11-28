@@ -1,0 +1,30 @@
+<ion-tabs>
+  <ion-tab tab="home">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis cursos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 style="text-align: center;">Mis cursos</h2>
+  <div *ngIf="cursos.length > 0">
+
+    <ion-list>
+      <ion-item *ngFor="let curso of cursos">
+        <ion-label>
+          <h2>{{ curso.nombre }}</h2>
+          <p>{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="cursos.length === 0">
+    <p>No hay cursos disponibles.</p>
+  </div>
+
+</ion-content>
+
+
+
+
