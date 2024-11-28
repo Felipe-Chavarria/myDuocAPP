@@ -21,3 +21,4 @@ export interface Responsive{
     autenticacion: Auth;
     data: User;
 }
+

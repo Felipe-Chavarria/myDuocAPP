@@ -36,4 +36,14 @@ export class ProveedorCursosService {
     let url = this.url + 'auth/me';
     return this.http.get(url);
   }
+
+  crearAsignatura(form: any): Observable<any> {
+    let url = this.url + 'cursos';
+    return this.http.post(url, form);
+  }
+
+  registrarAsistencia(eventCode: string): Observable<any> {
+    let url = this.url + 'clases/' + eventCode + '/asistencia';
+    return this.http.post(url, { evento: eventCode });
+  }
 }

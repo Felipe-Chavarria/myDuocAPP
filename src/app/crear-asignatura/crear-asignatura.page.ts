@@ -1,50 +1,49 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
+import { Cursos } from '../models/crear-asignatura';
+import { crearAsignatura } from '../models/crear-asignatura';
+import { AuthService } from '../providers/auth.service';
 
 @Component({
   selector: 'app-crear-asignatura',
   templateUrl: './crear-asignatura.page.html',
   styleUrls: ['./crear-asignatura.page.scss'],
 })
-export class CrearAsignaturaPage {
-  asignaturaForm: FormGroup;
+export class CrearAsignaturaPage implements OnInit {
+  public sigla: string = '';
+  public nombre: string = '';
+  public institucion: string = '';
+  public descripcion: string = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private toastController: ToastController
-  ) {
-    this.asignaturaForm = this.fb.group({
-      nombre: ['', Validators.required],
-      sigla: ['', Validators.required],
-      institucion: ['', Validators.required],
-      descripcion: ['', Validators.required],
-    });
+  constructor(private api: ProveedorCursosService, private auth: AuthService) {}
+
+  ngOnInit(): void{
+      this.auth.isAuthenticated();
   }
 
-  async enviarFormulario() {
-    const url = 'https://www.presenteprofe.cl/api/v1/cursos';
+  async enviarFormulario(form: crearAsignatura) {
 
-    try {
-      const response = await this.http.post(url, this.asignaturaForm.value).toPromise();
-      const toast = await this.toastController.create({
-        message: 'Asignatura creada exitosamente.',
-        duration: 2000,
-        color: 'success',
-      });
-      await toast.present();
-      this.asignaturaForm.reset();
-    } catch (error) {
-      const toast = await this.toastController.create({
-        message: 'Error al crear la asignatura.',
-        duration: 2000,
-        color: 'danger',
-      });
-      await toast.present();
+    this.api.crearAsignatura(form).subscribe(
+      (response: any) => {
+        const datos: Cursos = {
+          mensaje: response.message,
+          cursos:{
+            id: response.data.id,
+            nombre: response.data.nombre,
+            sigla: response.data.sigla,
+            institucion: response.data.institucion,
+            descripcion: response.data.descripcion,
+          }
+      };
+    
+      if(datos.mensaje === 'Curso creado exitosamente'){
+        alert('Asignatura creada con éxito');
+      } else {
+        alert('Error al crear asignatura');
+      }
     }
-  }
+  );
+}
 }
 
 

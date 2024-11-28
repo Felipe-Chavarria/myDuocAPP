@@ -1,70 +1,36 @@
 <ion-content>
   <div class="container mt-4">
     <h2 class="text-center mb-4">Crear Asignatura</h2>
-
-    <form [formGroup]="asignaturaForm" (ngSubmit)="enviarFormulario()" class="needs-validation" novalidate>
       
       <!-- Nombre de Asignatura -->
-      <div class="form-group mb-4">
-        <label for="nombre" class="form-label">Nombre de la Asignatura</label>
-        <ion-item class="form-control">
-          <ion-input
-            id="nombre"
-            formControlName="nombre"
-            placeholder="Ingrese el nombre de la asignatura"
-            required>
+      <ion-list>
+        <ion-item>
+          <ion-input [(ngModel)] = "nombre" label="Nombre de la Asignatura" type="text" placeholder="Ingrese el nombre de la asignatura">
           </ion-input>
         </ion-item>
-      </div>
 
       <!-- Sigla -->
-      <div class="form-group mb-4">
-        <label for="sigla" class="form-label">Sigla</label>
-        <ion-item class="form-control">
-          <ion-input
-            id="sigla"
-            formControlName="sigla"
-            placeholder="Ingrese la sigla"
-            maxlength="10"
-            required>
-          </ion-input>
+        <ion-item >
+          <ion-input [(ngModel)]="sigla" label="Sigla" type="text"></ion-input>
         </ion-item>
-      </div>
 
       <!-- Institución -->
-      <div class="form-group mb-4">
-        <label for="institucion" class="form-label">Institución</label>
-        <ion-item class="form-control">
-          <ion-input
-            id="institucion"
-            formControlName="institucion"
-            placeholder="Ingrese el nombre de la institución"
-            required>
-          </ion-input>
+        <ion-item>
+          <ion-input [(ngModel)]="institucion" label="institucion" placeholder="Ingrese el nombre de la institucion"></ion-input>
         </ion-item>
-      </div>
 
       <!-- Descripción -->
-      <div class="form-group mb-4">
-        <label for="descripcion" class="form-label">Descripción</label>
-        <ion-item class="form-control">
-          <ion-textarea
-            id="descripcion"
-            formControlName="descripcion"
-            placeholder="Ingrese una descripción"
-            rows="6"
-            required>
+        <ion-item>
+          <ion-textarea [(ngModel)]="descripcion" label="descripcion" placeholder="Ingrese la descripcion">
           </ion-textarea>
         </ion-item>
-      </div>
+      </ion-list>
 
       <!-- Botón de Enviar -->
       <div class="d-flex justify-content-center">
-        <ion-button expand="block" type="submit" [disabled]="asignaturaForm.invalid">
+        <ion-button expand="block" (click)="enviarFormulario({sigla:sigla, nombre:nombre, institucion:institucion, descripcion:descripcion })">
           Crear Asignatura
         </ion-button>
       </div>
-
-    </form>
   </div>
 </ion-content>

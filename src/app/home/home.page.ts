@@ -25,6 +25,7 @@ export class HomePage  {
 }
 
   cerrarSesion(){
+    this.auth.logout();
     this.router.navigate(['/login']);
   }
   //dark mode
