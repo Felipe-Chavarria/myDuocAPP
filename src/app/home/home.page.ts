@@ -27,7 +27,7 @@ export class HomePage  {
   cerrarSesion(){
     this.router.navigate(['/login']);
   }
-
+  //dark mode
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
     document.body.setAttribute('color-theme', this.currentTheme);
