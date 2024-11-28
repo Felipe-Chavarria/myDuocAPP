@@ -15,8 +15,15 @@
         <ion-label>
           <h2>{{ curso.nombre }}</h2>
           <p>{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
-        </ion-label>
+        </ion-label><br>
+          <div class="Volver-btn">
+            <ion-button class="boton" color="danger" routerLink="/home">Crear Clase</ion-button>
+          </div>
+          <div class="Volver-btn">
+            <ion-button class="boton" color="danger" routerLink="/home">Ver Clases</ion-button>
+          </div>
       </ion-item>
+      
     </ion-list>
   </div>
   <div *ngIf="cursos.length === 0">
