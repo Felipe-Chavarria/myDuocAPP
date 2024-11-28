@@ -1,62 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>PresenteProfe</ion-title>
-
     <ion-buttons slot="end">
       <ion-button>
-        <ion-icon slot="icon-only" name="calendar-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="notifications-outline" aria-label="Notificaciones" color="light"></ion-icon>
       </ion-button>
-
-      <ion-button>
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-
-      <ion-button>
-        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      <ion-button (click)="toggleTheme()">
+        <ion-icon [name]="currentTheme === 'dark' ? 'moon' : 'sunny'" slot="icon-only" color="light"></ion-icon>
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
-  <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <div class="wrapper">
-  <div class="container">
-    <div class="header">
-    <div class="gif">
-      <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="">
+    <div class="container">
+      <div class="header">
+        <div class="gif">
+          <img src="https://media.tenor.com/ZAMoMuQgf9UAAAAM/mapache-pedro.gif" alt="GIF de mapache">
+        </div>
+        <div class="Usuario">
+          <h2>Bienvenido {{usuario}}</h2>
+          <h4 class="perfil-label">"{{perfil}}"</h4>
+        </div>
+      </div>
     </div>
-
-    <div class="Usuario">
-      <h2>Bienvenido {{usuario}}</h2>
-      <h4 style="color: aqua;">"{{perfil}}"</h4>
-    </div>
-    </div>
-  </div>
-  
 
 <div *ngIf="perfil === 'estudiante'">
-  <div class="botones">
-    
+    <div class="Ingresar">
       <ion-button class="boton" routerLink="/ingresar">Ingresar a clase</ion-button>
+    </div>
+
+    <div class="Ver-Asignaturas">
       <ion-button class="boton" routerLink="/asignaturas">Ver Asignaturas</ion-button>
-
+    </div>
   </div>
-</div>
   
-<div *ngIf="perfil === 'docente'">
-  <div class="botones">
-
+  <div *ngIf="perfil === 'docente'">
+    <div class="Gestionar-Clases">
       <ion-button class="boton" routerLink="/gestionar-clases">Gestionar Clases</ion-button>
-      <ion-button class="boton" routerLink="/Crear-asignatura">Crear Clase</ion-button>
-      <ion-button class="boton" routerLink="/Ver-asistencia">Ver Asistencia</ion-button>
-    
-  </div>
-</div>
+    </div>
 
-  <div class="Volver-btn">
+    <div class="Ver-Alumnos">
+      <ion-button class="boton" routerLink="/ver-alumnos">Ver Alumnos</ion-button>
+    </div>
+  </div>
+
+  <div class="Volver-Inicio">
     <ion-button class="boton" color="danger" (click)='cerrarSesion()'>Cerrar Sesion</ion-button>
   </div>
   </div>

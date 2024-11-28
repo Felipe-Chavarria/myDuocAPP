@@ -7,22 +7,19 @@
   transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-icon {
+  font-size: 28px; /* Ajustar el tamaño del icono */
+  color: var(--ion-color-primary);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+body.dark {
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
 }
 
-#container a {
-  text-decoration: none;
+body.dark .container {
+  background: linear-gradient(135deg, #0d0d0d, #1f1f1f);
+  color: #e5e5e5;
 }
 
 
@@ -102,3 +99,53 @@
   padding: 0;
 }
 
+.Usuario h2 {
+  font-size: 24px;
+}
+
+.perfil-label {
+  color: aqua;
+  font-size: 16px;
+}
+
+.Ingresar,
+.Ver-Asignaturas,
+.Gestionar-Clases,
+.Ver-Alumnos,
+.Volver-Inicio {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton {
+  width: 50%;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  /* Remover el borde redondeado */
+  border-radius: 0%; /* Cambiar de 12px a 0% */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.2); /* Restaurar el efecto de sombra para el brillo */
+  font-weight: bold;
+  background-color: var(--ion-color-primary); /* Fondo sólido sin gradiente ni sombra */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.boton:hover {
+  transform: scale(1.05);
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.25), -8px -8px 16px rgba(255, 255, 255, 0.25); /* Brillo adicional al pasar el mouse */
+}
+
+.boton:active {
+  transform: scale(0.95);
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.25), inset -5px -5px 10px rgba(255, 255, 255, 0.25); /* Efecto de sombra al hacer clic */
+}
+
+.primary-button {
+  --background: var(--ion-color-primary); /* Fondo sólido sin gradiente */
+}
+
+.danger-button {
+  --background: var(--ion-color-danger); /* Fondo sólido sin gradiente */
+}
