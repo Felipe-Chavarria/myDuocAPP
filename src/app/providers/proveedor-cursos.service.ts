@@ -10,7 +10,7 @@ import { ClaseResponse, CrearClase } from '../models/clase';
   providedIn: 'root',
 })
 export class ProveedorCursosService {
-  private url = 'https://www.presenteprofe.cl/api/v1/';
+  private url = 'http://192.168.137.1:5000/api/v1/';
 
   constructor(private http: HttpClient) {}
 
