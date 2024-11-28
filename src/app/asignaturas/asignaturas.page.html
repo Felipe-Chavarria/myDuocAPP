@@ -30,15 +30,18 @@
               [class.active]="i === 0">
               <!-- Card de Ionic dentro del slide -->
               <div class="card-container">
-                <ion-card>
-                  <ion-card-header>
-                    <ion-card-title>{{ curso.nombre }}</ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content>
-                    {{ curso.descripcion || 'Información adicional sobre el curso.' }}
-                  </ion-card-content>
-                </ion-card>
+                <div class="card">
+                  <div class="card__border"></div>
+                  <div class="card_title__container">
+                    <h2 class="card_title">{{ curso.nombre }}</h2>
+                    <p class="card_paragraph">{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
+                  </div>
+                  <hr class="line" />
+                  <div class="card__list">
+                  </div>
+                </div>
               </div>
+              
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselCursos" data-bs-slide="prev" aria-label="Anterior">
@@ -50,7 +53,14 @@
             <span class="visually-hidden">Siguiente</span>
           </button>
         </div>
-      
+        <div>
+          <div class="datetime-wrapper">
+            <div class="datetime-card">
+              <div class="datetime-card__border"></div>
+              <ion-datetime class="datetime" presentation="date"></ion-datetime>
+            </div>
+          </div>                   
+        </div>
         <div *ngIf="cursos.length === 0">
           <p>No hay cursos disponibles.</p>
         </div>
@@ -76,3 +86,4 @@
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
+
