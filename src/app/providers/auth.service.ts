@@ -16,7 +16,7 @@ export class AuthService {
 
     async getToken(): Promise<string | null> {
         const result = await Preferences.get({ key: this.TOKEN_KEY });
-        return result.value;
+        return result.value || '';
     }
 
     async setPerfil(perfil: string): Promise<void> {
@@ -26,7 +26,7 @@ export class AuthService {
 
     async getPerfil(): Promise<string | null> {
         const result = await Preferences.get({ key: this.PROFILE_KEY });
-        return result.value
+        return result.value || '';
     }
 
     async setNombre(nombre: string): Promise<void> {
@@ -36,7 +36,7 @@ export class AuthService {
 
     async getNombre(): Promise<string | null> {
         const result = await Preferences.get({ key: this.NAME_KEY });
-        return result.value;
+        return result.value || '';
     }
 
     async isAuthenticated(): Promise<boolean> {

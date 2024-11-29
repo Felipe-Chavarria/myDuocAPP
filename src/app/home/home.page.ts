@@ -18,13 +18,13 @@ export class HomePage  {
     this.perfil = '';
   }
 
-  ngOnInit() {
-      this.usuario = this.auth.getNombre();
-      this.perfil = this.auth.getPerfil();
+  async ngOnInit() {
+      this.usuario = await this.auth.getNombre();
+      this.perfil = await this.auth.getPerfil();
 }
 
-  cerrarSesion(){
-    this.auth.logout();
+  async cerrarSesion(){
+    await this.auth.logout();
     this.router.navigate(['/login']);
   }
   //dark mode

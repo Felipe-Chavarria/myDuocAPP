@@ -19,8 +19,9 @@ export class LoginPage implements OnInit{
 
   constructor(private api: ProveedorCursosService, private router: Router, private auth: AuthService) {}
 
-  ngOnInit() {
-    if (this.auth.isAuthenticated()) {
+  async ngOnInit() {
+    const isAuthenticated = await this.auth.isAuthenticated();
+    if (isAuthenticated) {
       this.router.navigate(['/home']);
     }
   }
