@@ -28,6 +28,9 @@ export class LoginPage implements OnInit{
 
 
   async login(form: Login) {
+    if (await this.auth.isAuthenticated()) {
+      this.auth.logout();
+    }
     this.api.loginPorCorreo(form).subscribe(
       (response: any) => {
         const datos: Responsive = {
