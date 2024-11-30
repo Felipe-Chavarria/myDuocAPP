@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http'; // Importación de HttpClient
   styleUrls: ['./ver-clases.page.scss'],
 })
 export class VerClasesPage implements OnInit {
-  public clases: any[] = []; // Lista para almacenar las clases del curso
-  public cursoNombre: string = ''; // Nombre del curso
-  private idCurso: number | null = null; // ID del curso
+  public clases: any[] = []; 
+  public cursoNombre: string = ''; 
+  private idCurso: number | null = null; 
 
   constructor(
     private cursoService: CursoService,
-    private http: HttpClient // Inyección de HttpClient
+    private http: HttpClient 
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -44,8 +44,8 @@ export class VerClasesPage implements OnInit {
       (response: any) => {
         console.log('Respuesta de la API:', response);
         if (response && response.message === 'Listado de clases del curso') {
-          this.cursoNombre = response.curso.nombre; // Almacenar el nombre del curso
-          this.clases = response.clases; // Almacenar las clases en la variable 'clases'
+          this.cursoNombre = response.curso.nombre; 
+          this.clases = response.clases; 
         } else {
           alert('No se pudo obtener la lista de clases.');
         }
