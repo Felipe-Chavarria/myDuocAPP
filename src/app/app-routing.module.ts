@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'detalle-curso-estudiante',
     loadChildren: () => import('./detalle-curso-estudiante/detalle-curso-estudiante.module').then( m => m.DetalleCursoEstudiantePageModule)
   },
+  {
+    path: 'ver-clases',
+    loadChildren: () => import('./ver-clases/ver-clases.module').then( m => m.VerClasesPageModule)
+  },
 
   
     

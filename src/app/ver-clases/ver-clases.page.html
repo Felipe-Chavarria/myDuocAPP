@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Clases del {{ cursoNombre }}</h2>
+
+    <ion-list *ngIf="clases.length > 0; else noClases">
+      <ion-item *ngFor="let clase of clases; let i = index">
+        <ion-label>
+          <h2><strong>Clase {{ i + 1 }}</strong></h2> <!-- Número de clase (comienza desde 1) -->
+          <p><strong>Fecha:</strong> {{ clase.fecha }}</p>
+          <h3><strong>Desde: </strong> {{ clase.hora_inicio }} <strong>Hasta: </strong> {{ clase.hora_termino }} {{ clase.codigo_web }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #noClases>
+      <ion-item>
+        <ion-label>
+          <h3>No hay clases disponibles para este curso.</h3>
+        </ion-label>
+      </ion-item>
+    </ng-template>
+  </div>
+</ion-content>
