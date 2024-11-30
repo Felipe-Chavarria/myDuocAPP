@@ -5,6 +5,8 @@ import { NavController } from '@ionic/angular';
 import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
 import { Curso } from '../models/cursos'
 import { AuthService } from '../providers/auth.service';
+import { CursoService } from '../providers/curso.service';
+
 
 @Component({
   selector: 'app-asignaturas-profesor',
@@ -15,7 +17,7 @@ export class AsignaturasProfesorPage implements OnInit {
   cursos: Curso[] = [];
   errorMessage: string = '';
 
-  constructor(private proveedor: ProveedorCursosService, private auth: AuthService) {
+  constructor(private proveedor: ProveedorCursosService, private auth: AuthService, private cursoService: CursoService) {
     addIcons({ library, playCircle, radio, search });
   }
 
@@ -38,4 +40,11 @@ export class AsignaturasProfesorPage implements OnInit {
       }
     );
   }
+
+  async guardarCursoId(id: number) {
+    await this.cursoService.setCursoId(id); // Guarda el ID en Capacitor Preferences
+    console.log('ID del curso seleccionado guardado:', id);
+  }
+  
+  
 }

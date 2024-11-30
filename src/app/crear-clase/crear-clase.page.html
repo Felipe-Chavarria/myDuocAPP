@@ -9,6 +9,8 @@
           [(ngModel)]="fecha"
           label="Fecha"
           placeholder="Seleccione la fecha"
+          display-format="YYYY-MM-DD"
+          [min]="minFecha"
         ></ion-datetime>
       </ion-item>
 
@@ -37,7 +39,7 @@
     <div class="d-flex justify-content-center">
       <ion-button
         expand="block"
-        (click)="enviarFormulario({ fecha, hora_inicio, hora_termino })"
+        (click)="enviarFormulario()"
       >
         Crear Clase
       </ion-button>
