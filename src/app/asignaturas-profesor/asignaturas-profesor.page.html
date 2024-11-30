@@ -16,15 +16,19 @@
           <h2>{{ curso.nombre }}</h2>
           <p>{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
         </ion-label><br>
-          <div class="Volver-btn">
-            <ion-button class="boton" color="danger"(click)="guardarCursoId(curso.id)" routerLink="/crear-clase">Crear Clase</ion-button>
+          <div class="crear-btn">
+            <ion-button class="boton" (click)="guardarCursoId(curso.id)" routerLink="/crear-clase">Crear Clase</ion-button>
           </div>
-          <div class="Volver-btn">
-            <ion-button class="boton" color="danger"(click)="guardarCursoId(curso.id)" routerLink="/ver-clases">Ver Clases</ion-button>
+          <div class="ver-btn">
+            <ion-button class="boton" (click)="guardarCursoId(curso.id)" routerLink="/ver-clases">Ver Clases</ion-button>
           </div>
       </ion-item>
-      
     </ion-list>
+
+    <div class="Volver-btn">
+      <ion-button class="boton" color="danger" routerLink="/home">Volver</ion-button>
+    </div>
+
   </div>
   <div *ngIf="cursos.length === 0">
     <p>No hay cursos disponibles.</p>
