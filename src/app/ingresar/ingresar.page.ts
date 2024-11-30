@@ -53,8 +53,6 @@ export class IngresarPage implements OnInit {
 
       this.registrarAsistencia(this.resultadoScan);
 
-      alert('Asistencia registrada para el evento:' + this.resultadoScan);
-
       this.router.navigate(['/home']);
       } else {
       alert('QR invalido o no corresponde a un evento')
