@@ -6,6 +6,7 @@ import { Preferences } from '@capacitor/preferences';
 })
 export class CursoService {
   private CURSO_ID_KEY = 'curso-id';
+  private CURSO_CODE = 'curso-code';
 
   // Método para guardar el curso.id
   async setCursoId(id: number): Promise<void> {
@@ -21,6 +22,21 @@ export class CursoService {
     } catch (error) {
         console.error('Error al obtener el ID del curso desde Preferences:', error);
         return null; 
+    }
+  }
+
+  async setCursoCode(code: string): Promise<void> {
+    await Preferences.set({ key: this.CURSO_CODE, value: code });
+    console.log('Codigo del curso guardado:', code);
+  }
+
+  async getCursoCode(): Promise<string | null> {
+    try {
+      const result = await Preferences.get({ key: this.CURSO_CODE });
+      return result.value !== undefined && result.value !== null ? result.value : null;
+    } catch (error) {
+      console.error('Error al obtener el codigo del curso desde Preferences:', error);
+      return null;
     }
   }
 

@@ -15,7 +15,8 @@ export class CrearClasePage implements OnInit {
   public hora_inicio: string = '';
   public hora_termino: string = '';
   public minFecha: string = ''; 
-  private idCurso: number | null = null; 
+  private idCurso: number | null = null;
+  public codeClass: string = '';
 
   constructor(
     private api: ProveedorCursosService,
@@ -69,6 +70,10 @@ export class CrearClasePage implements OnInit {
         console.log('Respuesta de la API:', response);
         if (response.message === 'Clase creada exitosamente') {
           alert('Clase creada con éxito.' );
+          this.cursoService.setCursoCode(response.codigo_qr.toString()).then(() => {
+            this.codeClass = response.codigo_qr;
+            console.log('Codigo de la clase guardado:', this.codeClass);
+          });
         } else if (response.message === 'No autenticado') {
           alert('Debe iniciar sesión para realizar esta acción.');
         } else if (response.message === 'Curso no encontrado') {
@@ -82,3 +87,4 @@ export class CrearClasePage implements OnInit {
     );
   }
 }
+

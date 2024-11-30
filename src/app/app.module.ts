@@ -13,11 +13,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './providers/auth.service';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { QrCodeModule } from 'ng-qrcode';
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule, 
+    QrCodeModule],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, ProveedorCursosService,
     AuthService,
