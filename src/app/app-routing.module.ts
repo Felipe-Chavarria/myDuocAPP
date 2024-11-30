@@ -50,6 +50,10 @@ const routes: Routes = [
     path: 'ver-clases',
     loadChildren: () => import('./ver-clases/ver-clases.module').then( m => m.VerClasesPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
 
   
     

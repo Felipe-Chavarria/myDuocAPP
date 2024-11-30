@@ -31,6 +31,7 @@
     </ion-list>
 
     <ion-button expand="block" color="primary" (click)="login({ correo: correo, password: password })">Iniciar sesión</ion-button><br>
+    <ion-label>Tiene una cuenta ?</ion-label><ion-label color="primary" [routerLink]="['/registro']">¿Regístrese?</ion-label><br>
     <ion-label color="primary" [routerLink]="['/recuperar']">¿Ha olvidado su contraseña?</ion-label>
   </div>
 </ion-content>
