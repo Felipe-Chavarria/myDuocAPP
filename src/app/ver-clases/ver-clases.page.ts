@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../providers/curso.service';
 import { HttpClient } from '@angular/common/http'; // Importación de HttpClient
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ver-clases',
@@ -10,11 +11,14 @@ import { HttpClient } from '@angular/common/http'; // Importación de HttpClient
 export class VerClasesPage implements OnInit {
   public clases: any[] = []; 
   public cursoNombre: string = ''; 
-  private idCurso: number | null = null; 
+  public idCurso: number | null = null; 
+  public codeClase: string = '';
+
 
   constructor(
     private cursoService: CursoService,
-    private http: HttpClient 
+    private http: HttpClient,
+    private animationCtrl: AnimationController
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -45,7 +49,8 @@ export class VerClasesPage implements OnInit {
         console.log('Respuesta de la API:', response);
         if (response && response.message === 'Listado de clases del curso') {
           this.cursoNombre = response.curso.nombre; 
-          this.clases = response.clases; 
+          this.clases = response.clases;
+          this.codeClase = response.clases.code;
         } else {
           alert('No se pudo obtener la lista de clases.');
         }
@@ -56,4 +61,62 @@ export class VerClasesPage implements OnInit {
       }
     );
   }
+
+  async verAsistenciaClase(idClase: any, code: string): Promise<void> {
+    let url = 'https://www.presenteprofe.cl/api/v1/cursos/' + idClase + '/clase/'+code;
+
+    this.http.get<any>(url).subscribe(
+      (response: any) => {
+        console.log('Respuesta de la API:', response);
+        if (response && response.message === 'Listado de asistencia de la clase') {
+          alert('Asistencia de la clase: ' + response.clase.nombre);
+        } else {
+          alert('No se pudo obtener la lista de asistencia.');
+        }
+      },
+      (error) => {
+        console.error('Error al obtener la asistencia:', error);
+        alert('Ocurrió un error al obtener la asistencia. Por favor, revisa la consola para más detalles.');
+      }
+    );
+  }
+
+  enterAnimation = (baseEl: HTMLElement) => {
+    const root = baseEl.shadowRoot;
+
+    if (!root) {
+      console.error('Root is null');
+      return;
+    }
+
+    const backdropAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('ion-backdrop')!)
+      .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+
+    const wrapperAnimation = this.animationCtrl
+      .create()
+      .addElement(root.querySelector('.modal-wrapper')!)
+      .keyframes([
+        { offset: 0, opacity: '0', transform: 'scale(0)' },
+        { offset: 1, opacity: '0.99', transform: 'scale(1)' },
+      ]);
+
+    return this.animationCtrl
+      .create()
+      .addElement(baseEl)
+      .easing('ease-out')
+      .duration(500)
+      .addAnimation([backdropAnimation, wrapperAnimation]);
+  };
+
+  leaveAnimation = (baseEl: HTMLElement) => {
+    const animation = this.enterAnimation(baseEl);
+    if (animation) {
+      return animation.direction('reverse');
+    }
+    console.error('Animation is undefined');
+    return null;
+  };
 }
+

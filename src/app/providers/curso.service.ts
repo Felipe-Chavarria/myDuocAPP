@@ -47,4 +47,14 @@ export class CursoService {
     await Preferences.remove({ key: this.CURSO_ID_KEY });
     console.log('ID del curso eliminado');
   }
+
+  async removeCursoId(key: string): Promise<void> {
+    await Preferences.remove({ key: key });
+    console.log('ID del curso eliminado');
+  }
+
+  async removeCodeClase(key: string): Promise<void> {
+    await Preferences.remove({ key: key });
+    console.log('Codigo de la clase eliminado');
+  }
 }

@@ -40,11 +40,10 @@ export class AsignaturasProfesorPage implements OnInit {
       }
     );
   }
-
+  
   async guardarCursoId(id: number) {
     await this.cursoService.setCursoId(id); // Guarda el ID en Capacitor Preferences
     console.log('ID del curso seleccionado guardado:', id);
   }
-  
   
 }
