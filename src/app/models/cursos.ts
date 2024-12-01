@@ -11,6 +11,7 @@ sigla: any;
     titulo: string;  
     subtitulo: string; 
     usuario: Usuario;
+    imagen?: string; 
 }
 
 export interface Usuario {}

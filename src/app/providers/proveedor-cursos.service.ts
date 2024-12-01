@@ -13,7 +13,6 @@ export class ProveedorCursosService {
   private url = 'https://www.presenteprofe.cl/api/v1/';
 
   constructor(private http: HttpClient) {}
-
   obtenerDatos(): Observable<any> {
     return this.http.get<any>('${this.url}/auth'); 
   }

@@ -1,37 +1,41 @@
 <ion-tabs>
   <ion-tab tab="home">
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Mis cursos</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Mis cursos</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-<ion-content>
-  <h2 style="text-align: center;">Mis cursos</h2>
-  <div *ngIf="cursos.length > 0">
+    <ion-content>
+      <h2 style="text-align: center;">Mis cursos</h2>
+      <div *ngIf="cursos.length > 0">
+        <ion-list>
+          <ion-item *ngFor="let curso of cursos">
+            <ion-label>
+              <!-- Mostrar la imagen del curso -->
+              <ion-img [src]="curso.imagen" alt="{{ curso.nombre }}" style="max-width: 100%; height: auto;"></ion-img>
 
-    <ion-list>
-      <ion-item *ngFor="let curso of cursos">
-        <ion-label>
-          <h2>{{ curso.nombre }}</h2>
-          <p>{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
-        </ion-label><br>
-          <div class="crear-btn">
-            <ion-button class="boton" (click)="guardarCursoId(curso.id)" routerLink="/crear-clase">Crear Clase</ion-button>
-          </div>
-          <div class="ver-btn">
-            <ion-button class="boton" (click)="guardarCursoId(curso.id)" routerLink="/ver-clases">Ver Clases</ion-button>
-          </div>
-      </ion-item>
-    </ion-list>
-
-    <div class="Volver-btn">
-      <ion-button class="boton" color="danger" routerLink="/home">Volver</ion-button>
-    </div>
-
-  </div>
-  <div *ngIf="cursos.length === 0">
-    <p>No hay cursos disponibles.</p>
-  </div>
-
-</ion-content>
+              <h2>{{ curso.nombre }}</h2>
+              <p>{{ curso.descripcion || 'Información adicional sobre el curso.' }}</p>
+              
+              <div class="button-group">
+                <ion-button class="boton" color="primary" (click)="guardarCursoId(curso.id)" routerLink="/crear-clase">
+                  Crear Clase
+                </ion-button>
+                <ion-button class="boton" color="secondary" (click)="guardarCursoId(curso.id)" routerLink="/ver-clases">
+                  Ver Clases
+                </ion-button>
+                <ion-button class="boton" color="tertiary" (click)="guardarCursoId(curso.id)" routerLink="/ver-asistencia">
+                  Ver Asistencias
+                </ion-button>
+              </div>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div *ngIf="cursos.length === 0">
+        <p>No hay cursos disponibles.</p>
+      </div>
+    </ion-content>
+  </ion-tab>
+</ion-tabs>

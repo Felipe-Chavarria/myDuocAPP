@@ -9,7 +9,7 @@
     </ion-header>
 
     <ion-content>
-      <H2 style="text-align: center;">Mis asignaturas</H2>
+      <h2 style="text-align: center;">Mis asignaturas</h2>
       <div>
         <div id="carouselCursos" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -32,19 +32,22 @@
               <div class="card-container">
                 <div class="card">
                   <div class="card__border"></div>
+                  <!-- Imagen del curso -->
+                  <img [src]="curso.imagen" alt="Imagen del curso {{ curso.nombre }}" class="card-image" />
+                  <!-- Nombre de la clase sobre la imagen -->
                   <div class="card_title__container">
                     <h2 class="card_title">{{ curso.nombre }}</h2>
-                    <p class="card_paragraph">{{ curso.descripcion}}</p>
-                    <div class="id-sigla card_paragraph">
-                        id : {{curso.id}}
-                    </div>
                   </div>
                   <hr class="line" />
-                  <div class="card__list">
+                  <!-- Descripción debajo de la imagen -->
+                  <div class="card_description__container">
+                    <p class="card_paragraph">{{ curso.descripcion }}</p>
+                    <div class="id-sigla card_paragraph">
+                      
+                    </div>
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselCursos" data-bs-slide="prev" aria-label="Anterior">
@@ -89,4 +92,3 @@
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
-
