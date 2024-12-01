@@ -7,7 +7,7 @@
         <ion-label>
           <h2><strong>Clase {{ i + 1 }}</strong></h2> <!-- Número de clase (comienza desde 1) -->
           <p><strong>Fecha:</strong> {{ clase.fecha }}</p>
-          <h3><strong>Desde: </strong> {{ clase.hora_inicio }} <strong>Hasta: </strong> {{ clase.hora_termino }} {{ clase.codigo_web }}</h3>
+          <h3><strong>Desde: </strong> {{ clase.hora_inicio }} <br> <strong>Hasta: </strong>{{ clase.hora_termino }} <br> {{ clase.codigo_web }}</h3>
         </ion-label>
         <ion-button id="open-modal" (click)="verAsistenciaClase(idCurso,clase.codigo_web)">
           <ion-icon name="add-outline"></ion-icon>
@@ -42,7 +42,7 @@
   </div>
 </ion-content>
 <ion-tab-bar slot="bottom">
-  <ion-tab-button tab="home" routerLink="/home">
-    <ion-icon name="home-outline"></ion-icon>
-    <ion-label>Home</ion-label>
+  <ion-tab-button tab="home" routerLink="/asignaturas-profesor">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <ion-label>volver</ion-label>
 </ion-tab-button>

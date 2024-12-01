@@ -123,3 +123,13 @@ p {
     color: lightgray;
   }
 }
+ion-tab-bar {
+  --ion-tab-bar-background: hsl(220, 25%, 15%); /* Azul oscuro para el fondo */
+  --ion-tab-bar-border-color: hsl(220, 20%, 25%); /* Azul claro para el borde */
+  --color: hsl(220, 15%, 75%); /* Azul grisáceo para los íconos y texto inactivos */
+  --color-selected: hsl(220, 70%, 50%); /* Azul vibrante para el seleccionado */
+  position: fixed; /* Fijar la posición */
+  bottom: 0; /* Asegurarlo en la parte inferior */
+  width: 100%; /* Asegurar que ocupe todo el ancho */
+  z-index: 10; /* Mantenerlo encima de otros elementos */
+}
