@@ -51,7 +51,14 @@
         </ion-toolbar>
       </ion-header>
       <ion-content >
-        <qr-code [value]="codeClass" size="300" errorCorrectionLevel="M"/>
+        <div class="qr-container">
+          <div class="qr">
+            <qr-code [value]="codeClass" size="300" errorCorrectionLevel="M"/>
+            <div class="qr-text">
+              <h3>{{codeClass}}</h3>
+            </div>
+          </div>
+        </div>
       </ion-content>
     </ng-template>
   </ion-modal>

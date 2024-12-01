@@ -176,3 +176,35 @@
     --button-bg: var(--button-bg-dark);
     --border-color: var(--border-color-dark);
   }
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-height: 100dvh;
+  width: 100%;
+}
+  
+.qr {
+  
+  justify-content: center;
+  align-items: center;
+  border: 10px solid #3d00f6; 
+  padding: 0px; 
+  border-radius: 12px; 
+  background-color: #f8f9fa; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+.qr qr-code {
+  max-width: 100%;
+  max-height: 100%;
+}
+  
+.qr-text {
+  text-align: center;
+  margin-top: 10px; /* Espaciado entre el QR y el texto */
+  color: #007bff; /* Color del texto */
+}
