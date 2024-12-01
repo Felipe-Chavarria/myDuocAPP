@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../providers/auth.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomePage  {
   public perfil: any;
   public currentTheme: 'light' | 'dark' = 'light';
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private alertController: AlertController,private auth: AuthService, private router: Router) {
     this.usuario = '';
     this.perfil = '';
   }
@@ -23,10 +24,33 @@ export class HomePage  {
       this.perfil = await this.auth.getPerfil();
 }
 
-  async cerrarSesion(){
-    await this.auth.logout();
-    this.router.navigate(['/login']);
-  }
+async presentConfirmLogout() {
+  const alert = await this.alertController.create({
+    header: 'Cerrar sesión',
+    message: '¿Estás seguro de que deseas cerrar sesión?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cierre de sesión cancelado');
+        }
+      },
+      {
+        text: 'Cerrar sesión',
+        handler: async () => {
+          await this.auth.logout();
+          this.router.navigate(['/login']);
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+async cerrarSesion() {
+  await this.presentConfirmLogout();
+}
   //dark mode
   toggleTheme() {
     this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';

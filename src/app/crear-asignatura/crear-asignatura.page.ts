@@ -3,6 +3,7 @@ import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
 import { Cursos } from '../models/crear-asignatura';
 import { crearAsignatura } from '../models/crear-asignatura';
 import { AuthService } from '../providers/auth.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crear-asignatura',
@@ -15,10 +16,18 @@ export class CrearAsignaturaPage implements OnInit {
   public institucion: string = '';
   public descripcion: string = '';
 
-  constructor(private api: ProveedorCursosService, private auth: AuthService) {}
+  constructor(private alertController: AlertController,private api: ProveedorCursosService, private auth: AuthService) {}
 
   ngOnInit(): void{
       this.auth.isAuthenticated();
+  }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
   async enviarFormulario(form: crearAsignatura) {
@@ -37,9 +46,9 @@ export class CrearAsignaturaPage implements OnInit {
       };
     
       if(datos.mensaje === 'Curso creado exitosamente'){
-        alert('Asignatura creada con éxito');
+        this.presentAlert('Éxito','Asignatura creada con éxito');
       } else {
-        alert('Error al crear asignatura');
+        this.presentAlert('Error','Error al crear asignatura');
       }
     }
   );

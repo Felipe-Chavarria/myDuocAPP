@@ -4,6 +4,7 @@ import { CrearClase } from '../models/clase';
 import { ActivatedRoute } from '@angular/router';
 import { CursoService } from '../providers/curso.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-crear-clase',
@@ -19,6 +20,7 @@ export class CrearClasePage implements OnInit {
   public codeClass: string = '';
 
   constructor(
+    private alertController: AlertController,  // Inyección del AlertController
     private api: ProveedorCursosService,
     private route: ActivatedRoute,
     private cursoService: CursoService,
@@ -29,7 +31,7 @@ export class CrearClasePage implements OnInit {
     // Obtener el ID del curso desde el almacenamiento local
     this.idCurso = await this.cursoService.getCursoId(); 
     if (!this.idCurso) {
-      alert('No se ha seleccionado un curso.');
+      this.presentAlert('Error', 'No se ha seleccionado un curso.');
     } else {
       console.log('ID del curso cargado:', this.idCurso);
     }
@@ -39,18 +41,24 @@ export class CrearClasePage implements OnInit {
     this.minFecha = today.toISOString().split('T')[0];
   }
 
+  // Función para mostrar las alertas
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
   enviarFormulario(): void {
     if (!this.idCurso) {
-      alert('ID del curso no especificado');
+      this.presentAlert('Error', 'ID del curso no especificado');
       return;
     }
 
-    
-
-    
     const url = `https://www.presenteprofe.cl/api/v1/cursos/${this.idCurso}/clase`;
 
-    
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -69,22 +77,21 @@ export class CrearClasePage implements OnInit {
       (response: any) => {
         console.log('Respuesta de la API:', response);
         if (response.message === 'Clase creada exitosamente') {
-          alert('Clase creada con éxito.' );
+          this.presentAlert('Éxito', 'Clase creada con éxito.');
           this.cursoService.setCursoCode(response.codigo_qr.toString()).then(() => {
             this.codeClass = response.codigo_qr;
             console.log('Codigo de la clase guardado:', this.codeClass);
           });
         } else if (response.message === 'No autenticado') {
-          alert('Debe iniciar sesión para realizar esta acción.');
+          this.presentAlert('Error', 'Debe iniciar sesión para realizar esta acción.');
         } else if (response.message === 'Curso no encontrado') {
-          alert('El curso no fue encontrado.');
+          this.presentAlert('Error', 'El curso no fue encontrado.');
         }
       },
       (error) => {
         console.error('Error al crear la clase:', error);
-        alert('Ocurrió un error inesperado al crear la clase. Por favor, revisa la consola para más detalles.');
+        this.presentAlert('Error', 'Ocurrió un error inesperado al crear la clase. Por favor, revisa la consola para más detalles.');
       }
     );
   }
 }
-

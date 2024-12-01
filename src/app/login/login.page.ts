@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../providers/auth.service';
+import { AlertController } from '@ionic/angular';
 
 import { ProveedorCursosService } from '../providers/proveedor-cursos.service';
 import { Login } from '../models/login';
@@ -17,8 +18,17 @@ export class LoginPage implements OnInit{
   public password: string = '';
   public usuario: any;
 
-  constructor(private api: ProveedorCursosService, private router: Router, private auth: AuthService) {}
+  constructor(private alertController: AlertController, private api: ProveedorCursosService, private router: Router, private auth: AuthService) {}
 
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+  
   async ngOnInit() {
     const isAuthenticated = await this.auth.isAuthenticated();
     if (isAuthenticated) {
@@ -61,10 +71,10 @@ export class LoginPage implements OnInit{
         this.auth.setNombre(datos.data.nombre_completo);
 
         this.usuario = datos.data.nombre_completo;
-        alert('Bienvenido ' +  this.usuario);
+        this.presentAlert('Bienvenido', `Hola, ${this.usuario}`);
         this.router.navigate(['/home']);
       } else{
-        alert('Usuario o contraseña incorrecta');
+        this.presentAlert('Error', 'Usuario o contraseña incorrecta');
       }
     },
     (error) => {
