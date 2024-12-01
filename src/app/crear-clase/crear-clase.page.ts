@@ -18,6 +18,7 @@ export class CrearClasePage implements OnInit {
   public minFecha: string = ''; 
   private idCurso: number | null = null;
   public codeClass: string = '';
+  isAlertOpen = false;
 
   constructor(
     private alertController: AlertController,  // Inyección del AlertController
@@ -93,5 +94,15 @@ export class CrearClasePage implements OnInit {
         this.presentAlert('Error', 'Ocurrió un error inesperado al crear la clase. Por favor, revisa la consola para más detalles.');
       }
     );
+  }
+  generateAlertContent(): string {
+    if (this.codeClass) {
+      return `<qr-code [value]="'${this.codeClass}'" size="300" errorCorrectionLevel="M"></qr-code>`;
+    } else {
+      return 'Escanea el código QR para unirte a la clase.';
+    }
+  }
+  openAlert() {
+    this.isAlertOpen = true;
   }
 }
