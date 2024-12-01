@@ -5,23 +5,23 @@
       <!-- Nombre de Asignatura -->
       <ion-list>
         <ion-item>
-          <ion-input [(ngModel)] = "nombre" label="Nombre de la Asignatura" type="text" placeholder="Ingrese el nombre de la asignatura">
+          <ion-input [(ngModel)] = "nombre"  type="text" placeholder="Ingrese el nombre de la asignatura">
           </ion-input>
         </ion-item>
 
       <!-- Sigla -->
         <ion-item >
-          <ion-input [(ngModel)]="sigla" label="Sigla" type="text"></ion-input>
+          <ion-input [(ngModel)]="sigla" placeholder="Sigla" type="text"></ion-input>
         </ion-item>
 
       <!-- Institución -->
         <ion-item>
-          <ion-input [(ngModel)]="institucion" label="institucion" placeholder="Ingrese el nombre de la institucion"></ion-input>
+          <ion-input [(ngModel)]="institucion"  placeholder="Ingrese el nombre de la institucion"></ion-input>
         </ion-item>
 
       <!-- Descripción -->
         <ion-item>
-          <ion-textarea [(ngModel)]="descripcion" label="descripcion" placeholder="Ingrese la descripcion">
+          <ion-textarea [(ngModel)]="descripcion"  placeholder="Ingrese una descripcion">
           </ion-textarea>
         </ion-item>
       </ion-list>
@@ -31,11 +31,12 @@
         <ion-button expand="block" (click)="enviarFormulario({sigla:sigla, nombre:nombre, institucion:institucion, descripcion:descripcion })">
           Crear Asignatura
         </ion-button>
+        <div class="Volver-btn">
+          <ion-button class="boton" color="danger" routerLink="/home">Volver</ion-button>
+        </div>
       </div>
 
-      <div class="Volver-btn">
-        <ion-button class="boton" color="danger" routerLink="/home">Volver</ion-button>
-      </div>
+      
 
   </div>
 </ion-content>
