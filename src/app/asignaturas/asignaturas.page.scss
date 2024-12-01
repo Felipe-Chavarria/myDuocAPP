@@ -57,7 +57,7 @@
   gap: 16px;
 
   padding: 16px;
-  width: 19rem;
+  width: 304px;
   background-color: hsla(240, 15%, 9%, 1);
   background-image: radial-gradient(
       at 88% 40%,
@@ -107,7 +107,7 @@
   transform-origin: left;
 
   width: 200%;
-  height: 10rem;
+  height: 160px;
   background-image: linear-gradient(
     0deg,
     hsla(0, 0%, 100%, 0) 0%,
@@ -131,10 +131,10 @@
 }
 
 .card .card_title__container .card_paragraph {
-  margin-top: 0.25rem;
+  margin-top: 4px;
   width: 65%;
 
-  font-size: 0.8rem;
+  font-size: 13px;
   color: var(--paragraph);
 }
 
@@ -149,13 +149,13 @@
 .card .card__list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .card .card__list .card__list_item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .card .card__list .card__list_item .check {
@@ -171,21 +171,21 @@
 }
 
 .card .card__list .card__list_item .check .check_svg {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 12px;
+  height: 12px;
 
   fill: var(--black);
 }
 
 .card .card__list .card__list_item .list_text {
-  font-size: 0.75rem;
+  font-size: 12px;
   color: var(--white);
 }
 
 .card .button {
   cursor: pointer;
 
-  padding: 0.5rem;
+  padding: 8px;
   width: 100%;
   background-image: linear-gradient(
     0deg,
@@ -193,7 +193,7 @@
     hsl(220, 60%, 30%) 100%
   );
 
-  font-size: 0.75rem;
+  font-size: 12px;
   color: var(--white);
 
   border: 0;
@@ -209,7 +209,7 @@ ion-tab-bar {
 }
 
 ion-tab-button {
-  font-size: 0.85rem; /* Ajusta el tamaño del texto */
+  font-size: 13px; /* Ajusta el tamaño del texto */
   --ripple-color: hsl(220, 70%, 50%); /* Color de la animación ripple */
 }
 
@@ -218,7 +218,7 @@ ion-icon {
 }
 
 ion-label {
-  margin-top: 0.2rem; /* Ajuste de espacio entre el ícono y el texto */
+  margin-top: 3px; /* Ajuste de espacio entre el ícono y el texto */
 }
 /*style header*/
 ion-header {
@@ -241,7 +241,7 @@ ion-title {
 
 ion-buttons ion-button { /* Fondo transparente */
   --color: hsl(220, 70%, 50%); /* Azul vibrante para el texto del botón */
-  font-size: 0.85rem;
+  font-size: 13px;
 }
 
 ion-buttons ion-button:hover {
@@ -273,7 +273,7 @@ ion-buttons ion-button:hover {
   justify-content: center; /* Centra el contenido verticalmente */
 
   padding: 16px;
-  width: 19rem;
+  width: 304px;
   background-color: hsla(240, 15%, 9%, 1);
   background-image: radial-gradient(
       at 88% 40%,
@@ -325,7 +325,7 @@ ion-buttons ion-button:hover {
   transform-origin: left;
 
   width: 200%;
-  height: 10rem;
+  height: 160px;
   background-image: linear-gradient(
     0deg,
     hsla(0, 0%, 100%, 0) 0%,
@@ -352,9 +352,9 @@ ion-buttons ion-button:hover {
   color: var(--white);
   font-size: 16px;
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
+  padding: 8px;
 }
 
 .datetime::part(title),

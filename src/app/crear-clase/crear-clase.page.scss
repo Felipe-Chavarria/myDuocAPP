@@ -17,12 +17,12 @@
   
   /* Contenedor principal */
   .container {
-    margin-top: 4rem;
+    margin-top: 64px;
     padding: 0 16px;
     h2 {
       text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2rem;
+      margin-bottom: 16px;
+      font-size: 32px;
       color: var(--text-dark);
     }
   }
@@ -36,7 +36,7 @@
   ion-item {
     background-color: var(--input-bg-light); /* Fondo claro para los inputs */
     border: 1px solid var(--border-color-light);
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
     border-radius: 8px;
     
     ion-label {
@@ -78,7 +78,7 @@
       color: var(--text-light);
   
       h2 {
-        font-size: 2rem;
+        font-size: 32px;
         color: var(--text-light);
         text-align: center;
       }
@@ -93,7 +93,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 2rem;
+        margin-top: 32px;
       }
     }
   
@@ -120,10 +120,10 @@
   ion-button {
     background-color: var(--button-bg-light);
     color: var(--text-light);
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
+    font-size: 16px;
+    padding: 12px 24px;
     border-radius: 8px;
-    margin-top: 2rem;
+    margin-top: 32px;
     
     &:hover {
       background-color: var(--hover-color);
@@ -141,14 +141,14 @@
   
   /* Botón Volver */
   .Volver-btn {
-    margin-top: 1rem;
+    margin-top: 16px;
     text-align: center;
   
     ion-button {
       background-color: var(--button-bg-light);
       color: var(--text-light);
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
+      font-size: 16px;
+      padding: 12px 24px;
       border-radius: 8px;
   
       &:hover {

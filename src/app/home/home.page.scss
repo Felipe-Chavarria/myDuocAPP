@@ -60,12 +60,12 @@ body.dark .container {
 }
 
 .boton{
-  width: 50%; 
-  height: 40px; 
-  font-size: 14px; 
+  width: 70%; 
+  height: 70px; 
+  font-size: 25px;
   --background: linear-gradient(145deg, #6ca3fc, #17158e);
   color: white;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.2);
   font-weight: bold;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -109,18 +109,6 @@ body.dark .container {
   align-items: center;
 }
 
-.boton {
-  width: 50%;
-  height: 40px;
-  font-size: 14px;
-  color: white;
-  /* Remover el borde redondeado */
-  border-radius: 0%; /* Cambiar de 12px a 0% */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.2); /* Restaurar el efecto de sombra para el brillo */
-  font-weight: bold;
-  background-color: var(--ion-color-primary); /* Fondo sólido sin gradiente ni sombra */
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
 
 .boton:hover {
   transform: scale(1.05);
