@@ -2,9 +2,9 @@
 // http://ionicframework.com/docs/theming/
 // Barcode scanning styles
 body.barcode-scanning-active {
-    visibility: hidden;
-    --background: transparent;
-    --ion-background-color: transparent;
+    display: none;
+    --background: transparent !important;
+    --ion-background-color: transparent !important;
   }
   
   .barcode-scanning-modal {
@@ -13,9 +13,9 @@ body.barcode-scanning-active {
   
   @media (prefers-color-scheme: dark) {
     body.barcode-scanning-active {
-      visibility: hidden;
-      --background: transparent;
-      --ion-background-color: transparent;
+      display: none;
+      --background: transparent !important;
+      --ion-background-color: transparent !important;
     }
   }
   

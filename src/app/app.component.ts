@@ -8,18 +8,7 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform, private auth: AuthService) {
-    this.initializeApp();
+  constructor() {
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        this.auth.setToken(token);
-      }
-      else {
-      }
-    });
-  }
 }

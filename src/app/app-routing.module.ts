@@ -28,17 +28,14 @@ const routes: Routes = [
     loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
   },
   {
-    path: 'ingresar',
-    loadChildren: () => import('./ingresar/ingresar.module').then( m => m.IngresarPageModule)
-  },
-  {
     path: 'crear-asignatura',
     loadChildren: () => import('./crear-asignatura/crear-asignatura.module').then( m => m.CrearAsignaturaPageModule)
   },
   {
     path: 'crear-clase',
     loadChildren: () => import('./crear-clase/crear-clase.module').then( m => m.CrearClasePageModule)
-  },  {
+  },
+  {
     path: 'asignaturas-profesor',
     loadChildren: () => import('./asignaturas-profesor/asignaturas-profesor.module').then( m => m.AsignaturasProfesorPageModule)
   },

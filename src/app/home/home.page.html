@@ -30,7 +30,7 @@
 
 <div *ngIf="perfil === 'estudiante'">
     <div class="Ingresar">
-      <ion-button class="boton" routerLink="/ingresar">Ingresar a clase</ion-button>
+      <ion-button class="boton" (click)="empezarScan()">Ingresar a clase</ion-button>
     </div>
 
     <div class="Ver-Asignaturas">

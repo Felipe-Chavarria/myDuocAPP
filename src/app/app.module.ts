@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './providers/auth.service';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { QrCodeModule } from 'ng-qrcode';
 
 
 @NgModule({
