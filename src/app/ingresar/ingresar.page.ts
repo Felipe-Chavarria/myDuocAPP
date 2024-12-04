@@ -25,16 +25,7 @@ export class IngresarPage implements OnInit {
   ngOnInit() {
     if (this.platform.is('capacitor')) {
       // Verificar si la funcionalidad de escaneo de código de barras está soportada
-      BarcodeScanner.isSupported().then((result) => {
-        if (result) {
-          BarcodeScanner.checkPermissions().then(() => {
-            BarcodeScanner.removeAllListeners();
-            this.empezarScan();
-          });
-        } else {
-          alert('Escaneo de código de barras no soportado en este dispositivo');
-        }
-      });
+      this.checkPermissionsAndStartScan();
     }
   }
 
@@ -88,4 +79,34 @@ export class IngresarPage implements OnInit {
     );
   }
 
+  private async checkPermissionsAndStartScan(): Promise<void> {
+    try {
+      // Verifica si el escaneo de código de barras es compatible
+      const isSupported = await BarcodeScanner.isSupported();
+      if (!isSupported) {
+        console.error('El escaneo de código de barras no está soportado en este dispositivo.');
+        return;
+      }
+
+      // Verifica los permisos
+      const permissionStatus = await BarcodeScanner.checkPermissions();
+
+      if (permissionStatus.camera !== 'granted') {
+        console.log('No se han otorgado permisos, solicitando...');
+        const requestStatus = await BarcodeScanner.requestPermissions();
+
+        if (requestStatus.camera !== 'granted') {
+          console.error('No se otorgaron permisos de cámara.');
+          return;
+        }
+      }
+
+      // Si todo está bien, inicia el escaneo
+      this.empezarScan();
+    } catch (error) {
+      console.error('Error al verificar permisos o iniciar escaneo:', error);
+    }
+  }
+
 }
+

@@ -14,10 +14,11 @@ import { AuthService } from './providers/auth.service';
 import { AuthInterceptor } from './interceptores/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QrCodeModule } from 'ng-qrcode';
+import { AsistenciaModalComponent } from './ver-clases/AsistenciaModal.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AsistenciaModalComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(), 

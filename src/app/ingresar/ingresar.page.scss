@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 50%;
-  background: linear-gradient(135deg, #3c27ae, #167fd4); /* Fondo con gradiente */
+  background: transparent;
   color: white;
   border-radius: 20px; /* Bordes redondeados */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Sombra elegante */
@@ -18,7 +18,7 @@
   flex-direction: column; /* Permite organizar elementos verticalmente */
   height: 100%;
   text-align: center;
-  background: radial-gradient(at center, #1e1e1e, #0a0a0a); /* Fondo estilo radial */
+  background: transparent;
   border-radius: 16px; /* Bordes redondeados */
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5), inset 0px -10px 20px rgba(255, 255, 255, 0.1); /* Sombra */
   color: #fff; /* Color del texto */

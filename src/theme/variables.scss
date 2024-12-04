@@ -3,19 +3,22 @@
 // Barcode scanning styles
 body.barcode-scanning-active {
     visibility: hidden;
-    --background: transparent;
-    --ion-background-color: transparent;
+    --background: transparent !important;
+    --ion-background-color: transparent !important;
+    background: transparent !important;
   }
   
   .barcode-scanning-modal {
-    visibility: visible;
+    visibility: visible !important;
+    --background: transparent !important;
   }
   
   @media (prefers-color-scheme: dark) {
     body.barcode-scanning-active {
       visibility: hidden;
-      --background: transparent;
-      --ion-background-color: transparent;
+      --background: transparent !important;
+      --ion-background-color: transparent !important;
+      background: transparent !important;
     }
   }
   
@@ -138,13 +141,8 @@ body.barcode-scanning-active {
     --ion-color-danger-shade: #e04055;
     --ion-color-danger-tint: #ff5b71;
   
-    --ion-background-color: #121212;
-    --ion-background-color-rgb: 18, 18, 18;
     --ion-text-color: #ffffff;
     --ion-text-color-rgb: 255, 255, 255;
   
-    --ion-toolbar-background: #1f1f1f;
-    --ion-item-background: #1e1e1e;
-    --ion-card-background: #1e1e1e;
   }
   
