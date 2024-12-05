@@ -3,9 +3,6 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Ingresar a clases</ion-title>
-        <ion-buttons slot="start">
-          <ion-button routerLink="/home"> <-- Back </ion-button>
-        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -14,9 +11,6 @@
   <ion-tab tab="qr">
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button routerLink="/home"> <-- Back </ion-button>
-        </ion-buttons>
         <ion-title>Escanear QR</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -41,6 +35,11 @@
     <ion-tab-button (click)="empezarScan()" tab="qr">
       <ion-icon name="qr-code-outline"></ion-icon>
       <ion-label>QR</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="home" routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

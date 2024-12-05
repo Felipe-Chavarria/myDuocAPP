@@ -14,22 +14,22 @@
   <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
     <ion-list>
       <ion-item>
-        <ion-label position="floating">RUN</ion-label>
+        <ion-label position="floating">RUN</ion-label><br>
         <ion-input formControlName="run" type="text" placeholder="Ingrese su RUN"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
+        <ion-label position="floating">Nombre</ion-label><br>
         <ion-input formControlName="nombre" type="text" placeholder="Ingrese su nombre"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Apellido</ion-label>
+        <ion-label position="floating">Apellido</ion-label><br>
         <ion-input formControlName="apellido" type="text" placeholder="Ingrese su apellido"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Correo</ion-label>
+        <ion-label position="floating">Correo</ion-label><br>
         <ion-input formControlName="correo" type="email" placeholder="Ingrese su correo"></ion-input>
       </ion-item>
 
@@ -43,5 +43,7 @@
     </ion-list>
 
     <ion-button expand="block" color="primary" type="submit">Registrar</ion-button>
+    
+    <ion-button class="boton" color="primary" routerLink="/login" >Volver</ion-button>
   </form>
 </ion-content>

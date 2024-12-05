@@ -26,9 +26,6 @@
                 <ion-button class="boton" color="secondary" (click)="guardarCursoId(curso.id)" routerLink="/ver-clases">
                   Ver Clases
                 </ion-button>
-                <ion-button class="boton" color="tertiary" (click)="guardarCursoId(curso.id)" routerLink="/ver-asistencia">
-                  Ver Asistencias
-                </ion-button>
               </div>
             </ion-label>
           </ion-item>
@@ -40,4 +37,8 @@
     </ion-content>
   </ion-tab>
 </ion-tabs>
-
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" routerLink="/home">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <ion-label>volver</ion-label>
+</ion-tab-button>
