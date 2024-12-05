@@ -57,4 +57,9 @@ export class ProveedorCursosService {
     let url = this.url + 'clases/' + eventCode + '/asistencia';
     return this.http.post(url, { evento: eventCode });
   }
+
+  obtenerAsistenciaAlumno(idCurso: number): Observable<any> {
+    let url = this.url + 'cursos/' + idCurso;
+    return this.http.get(url);
+  }
 }

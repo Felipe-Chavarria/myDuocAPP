@@ -9,7 +9,7 @@ import { ActionSheetController } from '@ionic/angular';
         <ion-toolbar>
             <ion-title>Asistencia</ion-title>
             <ion-buttons slot="end">
-            <ion-button (click)="canDimmiss()">Cerrar</ion-button>
+            <ion-button (click)="confirmClose()">Cerrar</ion-button>
             </ion-buttons>
         </ion-toolbar>
         </ion-header>
@@ -67,13 +67,17 @@ export class AsistenciaModalComponent implements OnInit {
         console.log('Asistencia:', this.asistencia);
     }
 
-    async canDimmiss() {
+    async confirmClose() {
     const actionSheet = await this.actionSheetCtrl.create({
         header: '¿Está seguro?',
         buttons: [
         {
             text: 'Sí',
             role: 'confirm',
+            handler: async () => {
+            // Cierra el modal si el usuario confirma
+            await this.modalController.dismiss();
+            },
         },
         {
             text: 'No',
@@ -84,8 +88,6 @@ export class AsistenciaModalComponent implements OnInit {
 
     await actionSheet.present();
 
-    const { role } = await actionSheet.onWillDismiss();
-    return role === 'confirm';
 };
 }
 

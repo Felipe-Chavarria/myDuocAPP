@@ -13,6 +13,10 @@
           <ion-icon name="add-outline"></ion-icon>
           <ion-label> Ver Asistencia</ion-label>
         </ion-button>
+        <ion-button id="open-modal-qr" (click)="generarQr(clase.codigo_web)">
+          <ion-icon name="add-outline"></ion-icon>
+          <ion-label> generar Qr </ion-label>
+        </ion-button>
       </ion-item>
     </ion-list>
 
@@ -27,6 +31,22 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+        
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modal trigger="open-modal-qr" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+      <ng-template>
+        <ion-header>
+        <ion-toolbar>
+          <ion-title>Modal</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content >
         
       </ion-content>
     </ng-template>

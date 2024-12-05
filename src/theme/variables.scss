@@ -3,8 +3,9 @@
 // Barcode scanning styles
 body.barcode-scanning-active {
     visibility: hidden;
-    --background: transparent;
-    --ion-background-color: transparent;
+    --background: transparent !important;
+    --ion-background-color: transparent !important;
+    background: transparent !important;
   }
   
   .barcode-scanning-modal {
@@ -14,8 +15,9 @@ body.barcode-scanning-active {
   @media (prefers-color-scheme: dark) {
     body.barcode-scanning-active {
       visibility: hidden;
-      --background: transparent;
-      --ion-background-color: transparent;
+      --background: transparent !important;
+      --ion-background-color: transparent !important;
+      background: transparent !important;
     }
   }
   

@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'ver-asistencia',
     loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule)
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
+  },
 
   
     

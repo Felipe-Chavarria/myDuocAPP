@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../providers/curso.service';
 import { HttpClient } from '@angular/common/http'; // Importación de HttpClient
-import { AnimationController } from '@ionic/angular';
+import { AnimationController, ModalController } from '@ionic/angular';
+import { GenerarQrModalComponent } from './generarQrModal.component';
+import { AsistenciaModalComponent } from './AsistenciaModal.component';
 
 @Component({
   selector: 'app-ver-clases',
@@ -18,7 +20,8 @@ export class VerClasesPage implements OnInit {
   constructor(
     private cursoService: CursoService,
     private http: HttpClient,
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private modalController: ModalController
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -50,7 +53,7 @@ export class VerClasesPage implements OnInit {
         if (response && response.message === 'Listado de clases del curso') {
           this.cursoNombre = response.curso.nombre; 
           this.clases = response.clases;
-          this.codeClase = response.clases.code;
+          this.codeClase = response.clases.codigo_web;
         } else {
           alert('No se pudo obtener la lista de clases.');
         }
@@ -64,12 +67,20 @@ export class VerClasesPage implements OnInit {
 
   async verAsistenciaClase(idClase: any, code: string): Promise<void> {
     let url = 'https://www.presenteprofe.cl/api/v1/cursos/' + idClase + '/clase/'+code;
+    console.log('URL de la API:', url);
 
     this.http.get<any>(url).subscribe(
-      (response: any) => {
+      async (response: any) => {
         console.log('Respuesta de la API:', response);
-        if (response && response.message === 'Listado de asistencia de la clase') {
-          alert('Asistencia de la clase: ' + response.clase.nombre);
+        if (response.message === 'Listado de asistencia a la clase') {
+          console.log('Datos pasados al modal:', response.asistencias);
+          const modal = await this.modalController.create({
+            component: AsistenciaModalComponent,
+            componentProps: {
+              asistencia: response.asistencias,
+            },
+          })
+          await modal.present();
         } else {
           alert('No se pudo obtener la lista de asistencia.');
         }
@@ -79,6 +90,16 @@ export class VerClasesPage implements OnInit {
         alert('Ocurrió un error al obtener la asistencia. Por favor, revisa la consola para más detalles.');
       }
     );
+  }
+
+  async generarQr(codeClase: any){
+    const modal = await this.modalController.create({
+      component: GenerarQrModalComponent,
+      componentProps: {
+        codigoClase: codeClase,
+      },
+    });
+    await modal.present();
   }
 
   enterAnimation = (baseEl: HTMLElement) => {
