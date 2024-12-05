@@ -11,34 +11,23 @@
 
       <!-- Hora de Inicio -->
       <ion-item>
-        <ion-input
-          [(ngModel)]="hora_inicio"
-          label="Hora de Inicio"
-          type="time"
-          placeholder="Ingrese la hora de inicio"
-        ></ion-input>
+        <ion-input [(ngModel)]="hora_inicio" label="Hora de Inicio" type="time"
+        placeholder="Ingrese la hora de inicio"></ion-input>
       </ion-item>
 
       <!-- Hora de Término -->
       <ion-item>
-        <ion-input
-          [(ngModel)]="hora_termino"
-          label="Hora de Término"
-          type="time"
-          placeholder="Ingrese la hora de término"
-        ></ion-input>
+        <ion-input [(ngModel)]="hora_termino" label="Hora de Término" type="time"
+        placeholder="Ingrese la hora de término"></ion-input>
       </ion-item>
   </ion-list>
 
   <!-- Botón de Enviar -->
     <div class="d-flex justify-content-center"> 
-      <ion-button
-        id="open-modal"
-        expand="block"
-        (click)="enviarFormulario()"
-      >
+      <ion-button id="open-modal" expand="block" (click)="enviarFormulario()">
       crear Clase
       </ion-button>
+        <ion-button class="boton" color="danger" routerLink="/asignaturas-profesor">Volver</ion-button>
 
       <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
       <ng-template>
@@ -65,9 +54,5 @@
     </div>
 
 
-    <!-- Botón Volver -->
-    <div class="Volver-btn">
-      <ion-button class="boton" color="danger" routerLink="/asignaturas-profesor">Volver</ion-button>
-    </div>
   </div>
 </ion-content>
